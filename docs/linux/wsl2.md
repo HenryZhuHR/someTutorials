@@ -190,3 +190,44 @@ sudo service lightdm restart
 
 
 
+wsl 子系统桌面，网上很多教程，要装的东西比较多，感觉比较繁琐，果断放弃了。今天给大家分享一个简单的实现。
+
+ 
+
+准备工作
+
+WSL 不支持 systemd 而 Gnome 桌面又是基于 systemd，所以先解决这个问题。（参考：https://github.com/DamionGans/ubuntu-wsl2-systemd-script）
+
+sudo apt update
+sudo apt install git
+git clone https://github.com/DamionGans/ubuntu-wsl2-systemd-script.git
+cd ubuntu-wsl2-systemd-script/
+bash ubuntu-wsl2-systemd-script.sh
+重新启动子系统，或者重启电脑也行。
+
+ 
+
+开始操作（参考：https://developer.aliyun.com/article/764492）
+
+
+安装 Gnome 桌面
+sudo apt update
+sudo apt install -y ubuntu-desktop
+
+安装 Xrdp
+sudo apt install -y xrdp
+sudo systemctl status xrdp
+
+sudo adduser xrdp ssl-cert
+sudo systemctl restart xrdp
+
+查看一下配置文件中的端口（默认：3389）
+vim /etc/xrdp/xrdp.ini
+
+
+配置防火墙
+sudo ufw allow 3389
+
+
+远程桌面连接
+localhost:3389
