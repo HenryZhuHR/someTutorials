@@ -1,6 +1,9 @@
-[CSDN配置教程](https://blog.csdn.net/qq_33559992/article/details/97548915)
+# Windows 下配置 STM32 开发环境
+本文档是在 Windows 下配置 STM32 开发环境
 
+[Linux 下配置 STM32 开发环境]() 暂未完成 ...
 # 文档导航
+- [Windows 下配置 STM32 开发环境](#windows-下配置-stm32-开发环境)
 - [文档导航](#文档导航)
 - [环境配置](#环境配置)
   - [安装 VS code](#安装-vs-code)
@@ -22,21 +25,28 @@
 | :--: | :-- |
 | [VS code](#安装-vs-code) | 作为代码编辑器 |
 | [LLVM](#安装-llvm) | 代码补全 |
-| [Git for Windows](#安装-git-for-windows) | - |
+| [Git for Windows](#安装-git-for-windows) | 提供 Git 支持和 MINGW64 指令终端 |
 | [arm-none-eabi-gcc](#安装-arm-none-eabi-gcc) | - |
 | [OpenOCD for Windows](#安装-openocd-for-windows) | - |
 | [STM32CubeMX](#安装-stm32cubemx) | - |
 
 
 ## 安装 VS code
-https://code.visualstudio.com/
+点击下载 [VS code](https://code.visualstudio.com/)
+也可以源码编译安装
 
 ## 安装 LLVM
-(https://releases.llvm.org/download.html) ：代码补全，其实可以理解为 Clang。安装完成后，将路径添加到环境变量里。
+代码补全，其实可以理解为 Clang
 
+点击下载 [LLVM](https://releases.llvm.org/download.html) ，然后安装
+- 安装时添加到环境变量：选择 `Add LLVM to the system PATH for all users` 或 `Add LLVM to the system PATH for current user`
+- 手动将安装目录里的 `bin` 目录添加到环境变量里
+- `Create LLVM Desktop Icon` 选择是否在桌面创建图标
+![添加到环境变量](img/llvm-install-to-path-after.png)
 
 ## 安装 Git for Windows
-(https://gitforwindows.org/): 提供 Git 支持和 MINGW64 指令终端。
+`Git for Windows` 提供 Git 支持和 MINGW64 指令终端。
+下载 [Git for Windows](https://gitforwindows.org/) 
 
 [MINGW](https://sourceforge.net/projects/mingw/files/latest/download?source=files)
 

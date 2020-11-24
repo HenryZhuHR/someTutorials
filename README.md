@@ -14,6 +14,6 @@
 
 # others
 ```bash
-edit in workstation
-edit in matebook
+edit in workstation-DELL
+edit in laptop-MateBook14
 ```
