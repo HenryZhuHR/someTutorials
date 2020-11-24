@@ -42,7 +42,7 @@
 - 安装时添加到环境变量：选择 `Add LLVM to the system PATH for all users` 或 `Add LLVM to the system PATH for current user`
 - 手动将安装目录里的 `bin` 目录添加到环境变量里
 - `Create LLVM Desktop Icon` 选择是否在桌面创建图标
-![添加到环境变量](img/llvm-install-to-path-after.png)
+![添加到环境变量](img/llvm-install-to-path.png)
 
 ## 安装 Git for Windows
 `Git for Windows` 提供 Git 支持和 MINGW64 指令终端。
@@ -56,6 +56,7 @@
 其他的新版的下载，[GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) 。
 
 正常安装后，记得需要将软件的安装目录下的bin文件夹设置进入环境变量PATH中。
+![添加到环境变量](img/gun_arm_embeded_toolchain-instll-to-path.png)
 
 ## 安装 OpenOCD for Windows
 (https://gnutoolchains.com/arm-eabi/openocd/) ：
