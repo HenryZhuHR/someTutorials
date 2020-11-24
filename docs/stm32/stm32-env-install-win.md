@@ -36,7 +36,7 @@
 也可以源码编译安装
 
 ## 安装 LLVM
-代码补全，其实可以理解为 Clang
+**LLVM** (low level virtual machine)
 
 点击下载 [LLVM](https://releases.llvm.org/download.html) ，然后安装
 - 安装时添加到环境变量：选择 `Add LLVM to the system PATH for all users` 或 `Add LLVM to the system PATH for current user`
@@ -59,13 +59,13 @@
 ![添加到环境变量](img/gun_arm_embeded_toolchain-instll-to-path.png)
 
 ## 安装 OpenOCD for Windows
-(https://gnutoolchains.com/arm-eabi/openocd/) ：
+下载 [OpenOCD](https://gnutoolchains.com/arm-eabi/openocd/) ：
 一个开源的片上调试器(Open On-Chip Debugger)。
 在Windows下自己编译可能有问题 。所以，我们选择编译好的。
 下载后的文件不是安装包，把程序文件夹放入自己的软件安装目录下，将软件的bin文件夹路径加入用户环境变量PATH中。
 
 ## 安装 STM32CubeMX
-(https://www.st.com/zh/development-tools/stm32cubemx.html)：用于生成带makefile的工程。
+下载 [STM32CubeMX](https://www.st.com/zh/development-tools/stm32cubemx.html)：用于生成带makefile的工程。
 这样我们就可以不用自己写MakeFile了。套用他的模板，然后修改为自己的目录就可以。
 
 安装目录下 `/Keil_v5/ARM/STLink/USBDriver` 里的 `dpinst_amd64.exe` 和 `dpinst_x86.exe`
@@ -75,7 +75,7 @@
 
 # 搭建环境
 ## STM32CubeMX
-STM32CubeMX是一个配置STM32代码的工具，它把很多东西封装的比较好，硬件抽象层、中间层、示例代码等。
+STM32CubeMX是一个配置STM32代码的工具，它把很多东西封装的比较好，硬件抽象层、中间层、示例代码等。由于STM32CubeMX软件是基于JAVA环境运行的，所以需要安装JRE才能使用，建议装Java8
 
 现在ST公司升级和维护的库主要就是STM32CubeMX的HAL库和标准外设库，使用这两种库开发STM32各有各的好处，下面简单描述一下。
 
@@ -83,11 +83,6 @@ STM32CubeMX是一个图形化的工具，也是配置和初始化C代码生成�
 
 从上图可以看得出，它包含了STM32所有系列的芯片，包含示例和样本（Examples and demos）、中间组件（Middleware Components）、硬件抽象层（Hardwaree abstraction layer）。
 
-
----
-由于STM32CubeMX软件是基于JAVA环境运行的，所以需要安装JRE才能使用，目前（2016年10月31日）JRE最新版本是jre1.8.0_112。
-
-TM32CubeMX要求JRE最低版本是1.7.0_45，如果你电脑已安装JRE版本大于1.7.0_45，则可以不用再下载安装。
 
 
 ### 创建工程
