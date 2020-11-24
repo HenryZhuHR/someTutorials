@@ -34,7 +34,7 @@ sudo apt install -y xrdp
 sudo systemctl status xrdp
 ```
 
-每次启动前运行：
+**每次启动前运行**：
 ```bash
 sudo adduser xrdp ssl-cert
 sudo systemctl restart xrdp
@@ -49,3 +49,5 @@ vim /etc/xrdp/xrdp.ini
 ```bash
 sudo ufw allow 3389
 ```
+
+![登录远程桌面](img/login_remote_desktop.png)
