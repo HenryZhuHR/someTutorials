@@ -38,6 +38,8 @@ https://code.visualstudio.com/
 ## 安装 Git for Windows
 (https://gitforwindows.org/): 提供 Git 支持和 MINGW64 指令终端。
 
+[MINGW](https://sourceforge.net/projects/mingw/files/latest/download?source=files)
+
 ## 安装 arm-none-eabi-gcc
 [arm-none-eabi-gcc](https://launchpad.net/gcc-arm-embedded/+download)：选择  [gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe (md5)](https://launchpadlibrarian.net/287101671/gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe)
 
