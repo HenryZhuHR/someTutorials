@@ -23,6 +23,12 @@
 ## LLVM
 ## Git for Windows
 ## arm-none-eabi-gcc
+[arm-none-eabi-gcc](https://launchpad.net/gcc-arm-embedded/+download)：选择  [gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe (md5)](https://launchpadlibrarian.net/287101671/gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe)
+
+其他的新版的下载，[GNU Arm Embedded Toolchain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) 。
+
+正常安装后，记得需要将软件的安装目录下的bin文件夹设置进入环境变量PATH中。
+
 ## OpenOCD for Windows
 ## STM32CubeMX
 
