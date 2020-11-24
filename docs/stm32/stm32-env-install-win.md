@@ -68,6 +68,9 @@
 (https://www.st.com/zh/development-tools/stm32cubemx.html)：用于生成带makefile的工程。
 这样我们就可以不用自己写MakeFile了。套用他的模板，然后修改为自己的目录就可以。
 
+安装目录下 `/Keil_v5/ARM/STLink/USBDriver` 里的 `dpinst_amd64.exe` 和 `dpinst_x86.exe`
+安装成功之后可以在设备管理器看到
+![驱动安装](img/stlink-driver.png)
 
 
 # 搭建环境
