@@ -5,6 +5,8 @@
 - [ ] [Linux]()
 - [ ] [Deep Learning](docs/deepLearning/deepLearning.md) | [深度学习](docs/deepLearning/deepLearning_cn.md)
 
-20201120-1305
 
-[ScreenToGif](https://www.screentogif.com/)
+
+# 小工具
+
+- 电脑录屏输出Gif： [ScreenToGif](https://www.screentogif.com/)
