@@ -10,3 +10,10 @@
 # 小工具
 
 - 电脑录屏输出Gif： [ScreenToGif](https://www.screentogif.com/)
+
+
+# others
+```bash
+edit in workstation
+edit in matebook
+```
