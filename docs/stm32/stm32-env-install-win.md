@@ -15,9 +15,10 @@
 - [搭建环境](#搭建环境)
   - [STM32CubeMX](#stm32cubemx)
     - [创建工程](#创建工程)
-    - [配置 vscode](#配置-vscode)
-      - [vscode 插件配置](#vscode-插件配置)
-      - [vscode 终端选择](#vscode-终端选择)
+  - [配置 vscode](#配置-vscode)
+    - [vscode 插件配置](#vscode-插件配置)
+    - [vscode 终端选择](#vscode-终端选择)
+- [项目管理编译](#项目管理编译)
 
 
 # 环境配置
@@ -100,7 +101,7 @@ STM32CubeMX是一个图形化的工具，也是配置和初始化C代码生成�
 
 `new project` 新建项目
 左上角File..可以新建项目。
-新建项目以后，SYS里选择debug接口，这里选的是SWD，也可以选JTAG
+
 ![new project](img/stm32cubemx/new_project.png)
 
 选择好板子，这里也可以看到的开发板的特性 `features` 
@@ -114,6 +115,10 @@ STM32CubeMX是一个图形化的工具，也是配置和初始化C代码生成�
 
 接口配置
 ![接口配置](img/stm32cubemx/pinout_config.png)
+
+
+新建项目以后，SYS里选择debug接口，这里选的是SWD，也可以选JTAG
+![调试设置](img/stm32cubemx/sys_debug-SWD_JTAG.png)
 
 时钟配置
 先在RCC里选择高速外部时钟（HSE）和低速外部时钟源（LSE），这里选的都是晶振（因为板子上有这两个晶振）。
@@ -130,15 +135,49 @@ Toolchain/IDE选择生成makefile即可。前面的项目结构我选的basic，
 ![tools](img/stm32cubemx/tools_download.png)
 
 
-### 配置 vscode
+## 配置 vscode
 
-导出后，vscode打开文件
+导出后，vscode 打开目录 `stm32-test`
+```bash
+.
+├── Core
+│   ├── Inc
+│   │   ├── gpio.h
+│   │   ├── main.h
+│   │   ├── ...
+│   └── Src
+│       ├── gpio.c
+│       ├── main.c
+│       ├── ...
+├── Drivers
+│   ├── CMSIS     
+│   │   ├── Device
+│   │   └── Include
+│   │       ├── cmsis_armcc.h
+│   │       ├── ...
+│   └── STM32F4xx_HAL_Driver
+│       ├── Inc
+│       │   ├── Legacy
+│       │   │   └── stm32_hal_legacy.h
+│       │   ├── stm32f4xx_hal.h
+│       │   ├── ...
+│       └── Src
+│           ├── stm32f4xx_hal.c
+│           ├── ...
+├── STM32F401RETx_FLASH.ld
+├── startup_stm32f401xe.s
+└── stm32-test.ioc
+└── .mxproject
+```
 
-.ioc文件和.mxproject文件是STM32Cube的工程文件，Driver里是STM32和ARM CMSIS的库，最好不要修改。Inc和Src是供用户修改的源码。
+`stm32-test.ioc` 文件和 `.mxproject` 文件是 STM32CubeMX 的工程文件，Driver里是STM32和ARM CMSIS的库，最好不要修改
+
+`Core/Inc` 和 `Core/Src` 是供用户修改的源码。
 
 ![vscode](img/stm32cubemx/project_in_vscode.png)
 
-#### vscode 插件配置
+
+### vscode 插件配置
 - Chinese (Simplified)：VS Code的语言支持是以插件形式存在的，需要装个中文插件;、
 
 - C/C++：提供代码补全、智能感知和debug功能；（注意，VSCode 可能会推荐你安装C/C++ Intellisense插件来做智能感知 ，但它依赖于GNU Global工具，我们的arm工具链里没有这个，所以不用装）；
@@ -149,7 +188,7 @@ Toolchain/IDE选择生成makefile即可。前面的项目结构我选的basic，
 
 - Cortex-Debug：本教程的核心，有了它，才能把ARM工具链和OpenOCD等命令行工具组织到VSCode中，并进行图形化操作。
 
-#### vscode 终端选择
+### vscode 终端选择
 文件--首选项--设置，搜索terminal，设置内置终端的Shell为git bash（之前的默认是power shell）。
 
 点击“在settings.json中编辑"，修改为自己安装git bash的路径：
@@ -165,4 +204,9 @@ Ctrl+S保存后，按 Ctrl+` （波浪线那个键） 就可以打开终端，�
 }
 ```
 
+# 项目管理编译
 
+根目录下，得到 `build` 目录
+```bash
+make
+```
