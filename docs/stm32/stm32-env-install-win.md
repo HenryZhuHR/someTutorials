@@ -309,3 +309,10 @@ Info : Listening on port 4444 for telnet connections
 Error: No J-Link device found.
 ```
 说明没有配置好
+
+ST-LINK版本
+| 版本 | 配置文件 | ID |
+| -- | -- | -- |
+| ST-LINK | interface/stlink-v1.cfg| 0483:3744 |
+| ST-LINK/V2| interface/stlink-v2.cfg| 0483:3748 |
+| ST-LINK/V2-1| interface/stlink-v2-1.cfg| 0483:374b |
