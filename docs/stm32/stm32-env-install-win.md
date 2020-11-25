@@ -18,7 +18,12 @@
   - [配置 vscode](#配置-vscode)
     - [vscode 插件配置](#vscode-插件配置)
     - [vscode 终端选择](#vscode-终端选择)
+    - [vscode 任务配置](#vscode-任务配置)
+    - [vscode 运行](#vscode-运行)
 - [项目管理编译](#项目管理编译)
+  - [编译工程](#编译工程)
+    - [gcc 编译过程](#gcc-编译过程)
+  - [配置openocd](#配置openocd)
 
 
 # 环境配置
@@ -204,9 +209,103 @@ Ctrl+S保存后，按 Ctrl+` （波浪线那个键） 就可以打开终端，�
 }
 ```
 
+### vscode 任务配置
+在根目录下的 `.vscode` 目录中创建 `tasks.json`
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "-j4"
+            ]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "clean"
+            ]
+        }
+    ]
+}
+```
+
+Pressing Ctrl+Shift+B or running Run Build Task from the global Terminal menu show the following picker:
+
+### vscode 运行
+```json
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32F407VE", //使用J-link GDB Server时必须；其他GBD Server时可选（有可能帮助自动选择SVD文件）。支持的设备见 https://www.segger.com/downloads/supported-devices.php
+            "svdFile": "./STM32F407.svd", //svd文件，有这个文件才能查看寄存器的值，每个单片机都不同。可以在以下地址找到 https://github.com/posborne/cmsis-svd
+            "servertype": "openocd", //使用的GDB Server
+            "configFiles": [
+                "${workspaceRoot}/openocd.cfg"
+            ],
+            "preLaunchTask": "build",
+            "armToolchainPath": "C:/Program Files (x86)/GNU Arm Embedded Toolchain/9 2020-q2-update/bin/"
+        }
+    ]
+}
+```
+- `executable` : 编译出的二进制文件，也就是最终烧录到单片机中的，这里是elf文件。根据芯片的不同，可能产生不同的名称和后缀（例如TI的TM4C123芯片编译出来的名称是"main.axf"）
+- `request` : 可以选launch或attach。launch是指启动调试时同时开始执行程序；attcah是指程序已经在运行了，然后开始调试。我没测试过attach。
+- `type` : 调试的类型，选cortex-debug，这是我们装的插件。其实也可以填cppdbg之类的，但是那样我们就得自己配置gdb了，配置起来将会非常麻烦。
+- `device` : 目标芯片。如果你使用J-LINK GDB Server时必须要设置这个选项。然而我们的GDB Server是openocd，J-Link只用来连接芯片。
+- `svdFile` : svd文件的路径。
+- `servertype` : 要选择的gdb server。我们用openocd。
+- `configFiles` : gdb server的配置文件路径。其实openocd会自动读当前目录下的openocd.cfg文件，这个选项不填也行。但是如果你想把openocd.cfg放在别处，就可以用这个选项指定配置文件的路径。
+- `preLaunchTask` : 在启动调试前，预先执行的任务。在这里我们设置为前一篇文章里配置的build任务。这样每次调试前都会先自动编译好
+- `armToolchainPath` : 工具链的路径。配置了全局环境变量的情况下好像不设置也行。
+
 # 项目管理编译
 
+## 编译工程
 根目录下，得到 `build` 目录
 ```bash
 make
 ```
+执行命令，会生成每个源文件的 `*.o`、`*.d`、`*.lst ` 文件以及工程文件的 `*.bin` (二进制文件)、`*.hex` (十六进制文件)、最终链接得到的 `*.elf` 文件（用于调试）、`*.map`
+
+![make 成功](img/make/make-sucessfully.png)
+
+### gcc 编译过程
+gcc下编译过程如下图所示：
+- `.c` 文件 经过 arm-none-eabi-gcc 编译成 .o文件
+- `.s` 文件 经过 arm-none-eabi-as 编译成 .o文件
+- `.o` 文件 和 .a文件 经过 arm-none-eabi-ld 链接成 .elf文件
+- `.elf` 文件 经过 arm-none-eabi-objcopy 和 arm-none-eabi-objdump 转换成 hex文件/dis文件
+- `arm-none-eabi-gdb` 使用 `.elf` 文件进行debug
+
+
+## 配置openocd
+OpenOCD（Open On-Chip Debugger）开源片上调试器，是一款开源软件
+
+终端输入 `openocd`
+```bash
+$ openocd
+Open On-Chip Debugger 0.10.0 (2020-07-29) [https://github.com/sysprogs/openocd]
+Licensed under GNU GPL v2
+libusb1 09e75e98b4d9ea7909e8837b7a3f00dda4589dc3
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+Info : Listening on port 6666 for tcl connections   
+Info : Listening on port 4444 for telnet connections
+Error: No J-Link device found.
+```
+说明没有配置好
