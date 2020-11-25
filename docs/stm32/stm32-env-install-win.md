@@ -175,7 +175,7 @@ Toolchain/IDE选择生成makefile即可。前面的项目结构我选的basic，
 └── .mxproject
 ```
 
-`stm32-test.ioc` 文件和 `.mxproject` 文件是 STM32CubeMX 的工程文件，Driver里是STM32和ARM CMSIS的库，最好不要修改
+`stm32-test.ioc` 文件和 `.mxproject` 文件是 STM32CubeMX 的工程文件，Driver里是 `STM32` 和 `ARM CMSIS` 的库，最好不要修改
 
 `Core/Inc` 和 `Core/Src` 是供用户修改的源码。
 
@@ -183,18 +183,18 @@ Toolchain/IDE选择生成makefile即可。前面的项目结构我选的basic，
 
 
 ### vscode 插件配置
-- Chinese (Simplified)：VS Code的语言支持是以插件形式存在的，需要装个中文插件;、
+- `Chinese (Simplified)` : VS Code的语言支持是以插件形式存在的，需要装个中文插件;、
 
-- C/C++：提供代码补全、智能感知和debug功能；（注意，VSCode 可能会推荐你安装C/C++ Intellisense插件来做智能感知 ，但它依赖于GNU Global工具，我们的arm工具链里没有这个，所以不用装）；
+- `C/C++` : 提供代码补全、智能感知和debug功能；（注意，VSCode 可能会推荐你安装C/C++ Intellisense插件来做智能感知 ，但它依赖于GNU Global工具，我们的arm工具链里没有这个，所以不用装）；
 
-- C/C++ Snippets：好用的代码模板小工具。比如说，装好以后，敲个for，就可以自动补全整个for循环代码；
+- `C/C++ Snippets` : 好用的代码模板小工具。比如说，装好以后，敲个for，就可以自动补全整个for循环代码；
 
-- ARM：提供ARM汇编语言的代码高亮；
+- `ARM` : 提供ARM汇编语言的代码高亮；
 
-- Cortex-Debug：本教程的核心，有了它，才能把ARM工具链和OpenOCD等命令行工具组织到VSCode中，并进行图形化操作。
+- `Cortex-Debug` : 本教程的核心，有了它，才能把ARM工具链和OpenOCD等命令行工具组织到VSCode中，并进行图形化操作。
 
 ### vscode 终端选择
-文件--首选项--设置，搜索terminal，设置内置终端的Shell为git bash（之前的默认是power shell）。
+文件->首选项->设置，搜索terminal，设置内置终端的Shell为git bash（之前的默认是power shell）。
 
 点击“在settings.json中编辑"，修改为自己安装git bash的路径：
 ```json
