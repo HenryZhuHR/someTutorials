@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\..\\WHU-master\\Cesium-project\\PROJ-3d_SAR"
+		},
+		{
+			"path": "..\\..\\Cpp\\CppProject\\dip_learning"
+		},
+		{
+			"path": "..\\..\\..\\WHU-master\\Cesium-project\\Sar_3D"
+		}
+	],
+	"settings": {
+		"terminal.integrated.shell.windows": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+		// "terminal.integrated.shell.windows": "C:/Windows/System32/wsl.exe",
+		// "terminal.integrated.shell.windows": "C:/Users/henryzhu/Programs/Git/bin/bash.exe",
+		// "terminal.integrated.shell.windows": "C:/Windows/System32/bash.exe",
+	}
+}
