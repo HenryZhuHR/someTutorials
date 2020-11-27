@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "..\\..\\..\\WHU-master\\Cesium-project\\Sar_3D"
+		},
+		{
+			"path": "..\\docs\\stm32\\stm32-test-makefile"
 		}
 	],
 	"settings": {
