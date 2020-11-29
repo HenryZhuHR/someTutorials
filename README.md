@@ -4,6 +4,7 @@
 - [ ] [C && CXX]()
 - [ ] [Linux]()
 - [ ] [Deep Learning](docs/deepLearning/deepLearning.md) | [深度学习](docs/deepLearning/deepLearning_cn.md)
+- [ ] [STM32](./docs/stm32/stm32.md)
 
 
 
