@@ -14,6 +14,9 @@
 		},
 		{
 			"path": "..\\docs\\stm32\\stm32-test-makefile"
+		},
+		{
+			"path": "..\\..\\ARM\\project\\stm32-gpio-pushbutton"
 		}
 	],
 	"settings": {
