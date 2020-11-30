@@ -48,7 +48,7 @@ https://code.visualstudio.com/
 正常安装后，记得需要将软件的安装目录下的bin文件夹设置进入环境变量PATH中。
 
 ## 安装 OpenOCD for Windows
-(https://gnutoolchains.com/arm-eabi/openocd/) ：
+OpenOCD for Windows(https://gnutoolchains.com/arm-eabi/openocd/) ：
 一个开源的片上调试器(Open On-Chip Debugger)。
 在Windows下自己编译可能有问题 。所以，我们选择编译好的。
 下载后的文件不是安装包，把程序文件夹放入自己的软件安装目录下，将软件的bin文件夹路径加入用户环境变量PATH中。
