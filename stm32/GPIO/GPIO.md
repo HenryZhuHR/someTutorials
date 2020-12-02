@@ -11,6 +11,25 @@
   - [开漏复用输出](#开漏复用输出)
   - [推挽输出](#推挽输出)
   - [推挽复用输出](#推挽复用输出)
+- [HAL库 GPIO函数库](#hal库-gpio函数库)
+  - [GPIO 结构体](#gpio-结构体)
+  - [GPIO 枚举](#gpio-枚举)
+  - [GPIO 函数](#gpio-函数)
+    - [初始化和反初始化](#初始化和反初始化)
+      - [初始化](#初始化)
+      - [反初始化](#反初始化)
+    - [I/O 操作函数](#io-操作函数)
+      - [HAL_GPIO_ReadPin](#hal_gpio_readpin)
+      - [HAL_GPIO_WritePin](#hal_gpio_writepin)
+      - [HAL_GPIO_TogglePin](#hal_gpio_togglepin)
+      - [HAL_GPIO_LockPin](#hal_gpio_lockpin)
+      - [HAL_GPIO_EXTI_IRQHandler](#hal_gpio_exti_irqhandler)
+      - [HAL_GPIO_EXTI_Callback](#hal_gpio_exti_callback)
+  - [GPIO 常量](#gpio-常量)
+    - [管脚定义](#管脚定义)
+    - [管脚的输入输出模式定义](#管脚的输入输出模式定义)
+    - [最大输出频率定义](#最大输出频率定义)
+    - [上拉下拉选择](#上拉下拉选择)
 
 
 [CSDN 参考资料](https://blog.csdn.net/qq_38410730/article/details/79858906)
@@ -81,3 +100,215 @@ GPIO 支持 4 种输入模式
 
 ## 推挽复用输出
 
+# HAL库 GPIO函数库
+## GPIO 结构体
+在 `stm32f4xx_hal_gpio.h` 文件内定义了用于初始化 GPIO 的结构体 `GPIO_InitTypeDef` 
+```c
+/** 
+  * @brief GPIO Init structure definition  
+  */ 
+typedef struct
+{
+  uint32_t Pin;       /*!< Specifies the GPIO pins to be configured.
+                           This parameter can be any value of @ref GPIO_pins_define */
+
+  uint32_t Mode;      /*!< Specifies the operating mode for the selected pins.
+                           This parameter can be a value of @ref GPIO_mode_define */
+
+  uint32_t Pull;      /*!< Specifies the Pull-up or Pull-Down activation for the selected pins.
+                           This parameter can be a value of @ref GPIO_pull_define */
+
+  uint32_t Speed;     /*!< Specifies the speed for the selected pins.
+                           This parameter can be a value of @ref GPIO_speed_define */
+
+  uint32_t Alternate;  /*!< Peripheral to be connected to the selected pins. 
+                            This parameter can be a value of @ref GPIO_Alternate_function_selection */
+}GPIO_InitTypeDef;
+```
+## GPIO 枚举
+```c
+/** 
+  * @brief  GPIO Bit SET and Bit RESET enumeration 
+  */
+typedef enum
+{
+  GPIO_PIN_RESET = 0,
+  GPIO_PIN_SET
+}GPIO_PinState;
+```
+## GPIO 函数
+主要有 8 个函数
+### 初始化和反初始化
+```c
+/* Initialization and de-initialization functions *****************************/
+void  HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init);
+void  HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin);
+```
+#### 初始化
+```c
+void  HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init);
+```
+- 功能：GPIO 初始化
+- 实例：``HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);``
+
+
+#### 反初始化
+```c
+void  HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin);
+```
+- 功能：GPIO 初始化
+- 实例：
+
+
+
+
+### I/O 操作函数
+```c
+/* IO operation functions *****************************************************/
+GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+void HAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin);
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+```
+
+#### HAL_GPIO_ReadPin
+```c
+GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+```
+- 功能：读取引脚的电平状态，返回值为 0 或 1
+- 实例：
+
+#### HAL_GPIO_WritePin
+```c
+void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+```
+- 功能：写入引脚的电平状态
+- 实例：
+
+#### HAL_GPIO_TogglePin
+```c
+void HAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+```
+- 功能：翻转引脚的电平状态
+- 实例：
+
+#### HAL_GPIO_LockPin
+```c
+HAL_StatusTypeDef HAL_GPIO_LockPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+```
+- 功能：锁住引脚电平的电平状态。例如，某引脚的当前电平状态为1，当这个引脚电平变化时，保持锁定时的值
+- 实例：
+
+#### HAL_GPIO_EXTI_IRQHandler
+```c
+void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin);
+```
+- 功能：外部中断服务函数，清除中断标志位
+- 实例：
+
+#### HAL_GPIO_EXTI_Callback
+```c
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+```
+- 功能：中断回调函数，发生中断时需要执行的响应
+- 实例：
+
+## GPIO 常量
+### 管脚定义
+```c
+/** @defgroup GPIO_pins_define GPIO pins define
+  * @{
+  */
+#define GPIO_PIN_0                 ((uint16_t)0x0001)  /* Pin 0 selected    */
+#define GPIO_PIN_1                 ((uint16_t)0x0002)  /* Pin 1 selected    */
+#define GPIO_PIN_2                 ((uint16_t)0x0004)  /* Pin 2 selected    */
+#define GPIO_PIN_3                 ((uint16_t)0x0008)  /* Pin 3 selected    */
+#define GPIO_PIN_4                 ((uint16_t)0x0010)  /* Pin 4 selected    */
+#define GPIO_PIN_5                 ((uint16_t)0x0020)  /* Pin 5 selected    */
+#define GPIO_PIN_6                 ((uint16_t)0x0040)  /* Pin 6 selected    */
+#define GPIO_PIN_7                 ((uint16_t)0x0080)  /* Pin 7 selected    */
+#define GPIO_PIN_8                 ((uint16_t)0x0100)  /* Pin 8 selected    */
+#define GPIO_PIN_9                 ((uint16_t)0x0200)  /* Pin 9 selected    */
+#define GPIO_PIN_10                ((uint16_t)0x0400)  /* Pin 10 selected   */
+#define GPIO_PIN_11                ((uint16_t)0x0800)  /* Pin 11 selected   */
+#define GPIO_PIN_12                ((uint16_t)0x1000)  /* Pin 12 selected   */
+#define GPIO_PIN_13                ((uint16_t)0x2000)  /* Pin 13 selected   */
+#define GPIO_PIN_14                ((uint16_t)0x4000)  /* Pin 14 selected   */
+#define GPIO_PIN_15                ((uint16_t)0x8000)  /* Pin 15 selected   */
+#define GPIO_PIN_All               ((uint16_t)0xFFFF)  /* All pins selected */
+
+#define GPIO_PIN_MASK              0x0000FFFFU /* PIN mask for assert test */
+/**
+  * @}
+  */
+```
+### 管脚的输入输出模式定义
+
+```c
+GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;  /*设置引脚的输出类型为推挽输出*/
+```
+
+```c
+/** @defgroup GPIO_mode_define GPIO mode define
+  * @brief GPIO Configuration Mode 
+  *        Elements values convention: 0xX0yz00YZ
+  *           - X  : GPIO mode or EXTI Mode
+  *           - y  : External IT or Event trigger detection 
+  *           - z  : IO configuration on External IT or Event
+  *           - Y  : Output type (Push Pull or Open Drain)
+  *           - Z  : IO Direction mode (Input, Output, Alternate or Analog)
+  * @{
+  */ 
+#define  GPIO_MODE_INPUT              0x00000000U   /*!< Input Floating Mode                */
+#define  GPIO_MODE_OUTPUT_PP          0x00000001U   /*!< Output Push Pull Mode              */
+#define  GPIO_MODE_OUTPUT_OD          0x00000011U   /*!< Output Open Drain Mode             */
+#define  GPIO_MODE_AF_PP              0x00000002U   /*!< Alternate Function Push Pull Mode  */
+#define  GPIO_MODE_AF_OD              0x00000012U   /*!< Alternate Function Open Drain Mode */
+
+#define  GPIO_MODE_ANALOG             0x00000003U   /*!< Analog Mode  */
+    
+#define  GPIO_MODE_IT_RISING          0x10110000U   /*!< External Interrupt Mode with Rising edge trigger detection          */
+#define  GPIO_MODE_IT_FALLING         0x10210000U   /*!< External Interrupt Mode with Falling edge trigger detection         */
+#define  GPIO_MODE_IT_RISING_FALLING  0x10310000U   /*!< External Interrupt Mode with Rising/Falling edge trigger detection  */
+ 
+#define  GPIO_MODE_EVT_RISING         0x10120000U   /*!< External Event Mode with Rising edge trigger detection               */
+#define  GPIO_MODE_EVT_FALLING        0x10220000U   /*!< External Event Mode with Falling edge trigger detection              */
+#define  GPIO_MODE_EVT_RISING_FALLING 0x10320000U   /*!< External Event Mode with Rising/Falling edge trigger detection       */
+/**
+  * @}
+  */
+```
+
+
+### 最大输出频率定义
+```c
+/** @defgroup GPIO_speed_define  GPIO speed define
+  * @brief GPIO Output Maximum frequency
+  * @{
+  */
+#define  GPIO_SPEED_FREQ_LOW         0x00000000U  /*!< IO works at 2 MHz, please refer to the product datasheet */
+#define  GPIO_SPEED_FREQ_MEDIUM      0x00000001U  /*!< range 12,5 MHz to 50 MHz, please refer to the product datasheet */
+#define  GPIO_SPEED_FREQ_HIGH        0x00000002U  /*!< range 25 MHz to 100 MHz, please refer to the product datasheet  */
+#define  GPIO_SPEED_FREQ_VERY_HIGH   0x00000003U  /*!< range 50 MHz to 200 MHz, please refer to the product datasheet  */
+/**
+  * @}
+  */
+```
+GPIO 最大输出频率 (GPIO Output Maximum frequency)
+
+### 上拉下拉选择
+```c
+ /** @defgroup GPIO_pull_define GPIO pull define
+   * @brief GPIO Pull-Up or Pull-Down Activation
+   * @{
+   */  
+#define  GPIO_NOPULL        0x00000000U   /*!< No Pull-up or Pull-down activation  */
+#define  GPIO_PULLUP        0x00000001U   /*!< Pull-up activation                  */
+#define  GPIO_PULLDOWN      0x00000002U   /*!< Pull-down activation                */
+/**
+  * @}
+  */
+```
+上拉
