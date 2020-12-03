@@ -3,6 +3,8 @@
 - [两数之和](#两数之和)
   - [题目](#题目)
   - [解法](#解法)
+    - [暴力枚举](#暴力枚举)
+    - [哈希表](#哈希表)
 - [补充学习](#补充学习)
   - [Vector](#vector)
   - [打印一个vector的n种方式](#打印一个vector的n种方式)
@@ -14,6 +16,8 @@
     - [for_each + lambda](#for_each--lambda)
     - [for_each + functor](#for_each--functor)
     - [ostream_iterator](#ostream_iterator)
+  - [map](#map)
+  - [unordered_map](#unordered_map)
 
 
 
@@ -36,7 +40,11 @@
 链接：https://leetcode-cn.com/problems/two-sum
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ## 解法
-- [CXX 解法](./two-sum.cpp)
+最容易想到的方法是枚举数组中的每一个数 `x`，寻找数组中是否存在 `target - x`，即求和改为作差
+### 暴力枚举
+- [CXX 解法](./cpp/two-sum-enum.cpp)
+### 哈希表
+- [CXX 解法](./cpp/two-sum-hash.cpp)
 
 # 补充学习
 ## Vector
@@ -44,7 +52,7 @@ vector是C++标准模板库中的部分内容，它是一个多功能的，能�
 vector之所以被认为是一个容器，是因为它能够像容器一样存放各种类型的对象。         
 简单地说，vector是一个能够存放任意类型的动态数组，能够增加和压缩数据。         
 
-头文件引入
+- 头文件引入
 ```cpp
 #include <vector>
 ```
@@ -114,4 +122,18 @@ for_each(ivec.cbegin(), ivec.cend(), Display<int>());
 ```cpp
 ostream_iterator<int> out_iter(cout, " ");
 copy(ivec.cbegin(), ivec.cend(), out_iter);
+```
+
+
+## map
+- 头文件引入
+```cpp
+#include <map>
+```
+
+
+## unordered_map
+- 头文件引入
+```cpp
+#include <unordered_map>
 ```

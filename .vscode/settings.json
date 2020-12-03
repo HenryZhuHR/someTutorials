@@ -1,5 +1,12 @@
 {
     "terminal.integrated.shell.windows": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "files.associations": {
+        "*.md": "markdown",
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "unordered_map": "cpp"
+    },
     // "terminal.integrated.shell.windows": "C:/Windows/System32/wsl.exe",
     // "terminal.integrated.shell.windows": "C:/Users/henryzhu/Programs/Git/bin/bash.exe",
     // "terminal.integrated.shell.windows": "C:/Windows/System32/bash.exe",
