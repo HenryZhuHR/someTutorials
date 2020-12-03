@@ -12,6 +12,15 @@
   - [判断函数](#判断函数)
   - [大小函数](#大小函数)
   - [其他函数](#其他函数)
+- [打印一个vector的n种方式](#打印一个vector的n种方式)
+  - [for range](#for-range)
+  - [传统for](#传统for)
+  - [迭代器](#迭代器)
+  - [template function](#template-function)
+  - [template function 2](#template-function-2)
+  - [for_each + lambda](#for_each--lambda)
+  - [for_each + functor](#for_each--functor)
+  - [ostream_iterator](#ostream_iterator)
 
 
 
@@ -135,4 +144,73 @@ void assign(int n,const T& x);
 
 // 向量中[first,last)中元素设置成当前向量元素
 void assign(const_iterator first,const_iterator last);
+```
+
+
+
+# 打印一个vector的n种方式
+## for range
+```cpp
+vector<int> ivec = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+for (const auto &c : ivec) cout << c << " ";
+```
+用 const auto & 只是告诉我这里只是在读元素。
+
+## 传统for
+```cpp
+for (auto i = 0; i != ivec.size(); ++i) cout << ivec[i] << " ";
+```
+auto当然也可以换成别的，比如 delctype 之类.
+
+## 迭代器
+```cpp
+for (auto it = ivec.cbegin(); it != ivec.cend() ; ++it) cout << *it << " ";
+```
+这里的 auto 是 vector::const_iterator.当然还可以方向迭代器。
+
+## template function
+```cpp
+template <typename T>
+void display(const vector<T>& vec) {
+  for (auto it = vec.cbegin(); it != vec.cend(); ++it)
+    cout << *it << " ";
+}
+
+...
+display(ivec);
+```
+## template function 2
+```cpp
+template <typename T>
+void display(const T& container) {
+  for (auto it = container.cbegin(); it != container.cend(); ++it)
+    cout << *it << " ";
+}
+
+...
+display(ivec);
+```
+这个针对别的container也行，比如list等.
+
+## for_each + lambda
+```cpp
+for_each(ivec.cbegin(), ivec.cend(), [](const int& c){cout << c << " "; });
+```
+## for_each + functor
+```cpp
+template <typename elementType>
+struct Display {
+  void operator() (const elementType& element) const {
+    cout << element << " ";
+  }
+};
+
+...
+for_each(ivec.cbegin(), ivec.cend(), Display<int>());
+```
+## ostream_iterator
+```cpp
+ostream_iterator<int> out_iter(cout, " ");
+copy(ivec.cbegin(), ivec.cend(), out_iter);
 ```
