@@ -123,6 +123,7 @@ reverse_iterator rend();
 // 判断向量是否为空，若为空，则向量中无元素
 bool empty() const;
 ```
+
 ## 大小函数
 ```cpp
 // 返回向量中元素的个数
@@ -134,6 +135,7 @@ int capacity() const;
 // 返回最大可允许的vector元素数量值
 int max_size() const;
 ```
+
 ## 其他函数
 ```cpp
 // 交换两个同类型向量的数据
