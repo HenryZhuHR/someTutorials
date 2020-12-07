@@ -12,6 +12,7 @@
   - [判断函数](#判断函数)
   - [大小函数](#大小函数)
   - [其他函数](#其他函数)
+- [vector 与 迭代器](#vector-与-迭代器)
 - [打印一个vector的n种方式](#打印一个vector的n种方式)
   - [for range](#for-range)
   - [传统for](#传统for)
@@ -47,13 +48,13 @@ std::vector<double> values;
 # vector 的成员函数
 ## 构造函数
 ```cpp
-// 创建一个空vector
+// 创建一个空 vector
 vector();
 
-// 创建一个vector,元素个数为nSize
+// 创建一个 vector ,元素个数为 nSize
 vector(int nSize);
 
-// 创建一个vector，元素个数为nSize,且值均为t
+// 创建一个 vector ，元素个数为 nSize,且值均为t
 vector(int nSize,const t& t);
 
 // 复制构造函数
@@ -141,14 +142,19 @@ int max_size() const;
 // 交换两个同类型向量的数据
 void swap(vector&);
 
-// 设置向量中前n个元素的值为x
+// 清空 vector ，设置 vector 中前n个元素的值为x
 void assign(int n,const T& x);
 
 // 向量中[first,last)中元素设置成当前向量元素
 void assign(const_iterator first,const_iterator last);
 ```
 
+# vector 与 迭代器
+迭代器是一个`可遍历 STL 容器内全部或部分元素`的对象。一个迭代器用来指出容器中的一个特定位置。
 
+迭代器是个所谓的 smart pointers，具有遍历复杂数据结构的能力。
+
+运用 `start`、`finish`、`end_of_storage` 三个迭代器便可轻易操作vector 容器。
 
 # 打印一个vector的n种方式
 ## for range
