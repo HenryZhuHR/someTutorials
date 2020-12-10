@@ -9,7 +9,7 @@
             },
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/Users/henryzhu/Programs/MinGW/include",
+                "C:/Users/henryzhu/OneDrive/Programming/mingw-x64/mingw64/include",
                 "C:/Users/henryzhu/Programs/GNU Arm Embedded Toolchain/9 2020-q2-update/arm-none-eabi/include",
                 "Inc",
                 "Drivers/STM32F4xx_HAL_Driver/Inc",
@@ -25,7 +25,7 @@
                 "USE_HAL_DRIVER",
                 "STM32F401xE"
             ],
-            "compilerPath": "C:/Users/henryzhu/Programs/MinGW/bin/gcc.exe",
+            "compilerPath": "C:/Users/henryzhu/OneDrive/Programming/mingw-x64/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-arm"

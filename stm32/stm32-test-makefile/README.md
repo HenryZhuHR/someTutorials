@@ -12,11 +12,11 @@
 
 # 命令行启动
 ```bash
+make clean && make
 openocd \
     -f "interface/stlink-v2-1.cfg" \
     -f "target/stm32f4x.cfg" \
     -c "program ./build/stm32-test-makefile.hex"
-
 ```
 
 
