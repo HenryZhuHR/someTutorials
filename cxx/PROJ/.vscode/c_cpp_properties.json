@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        // {
+        //     "name": "Linux-Ubuntu20.04",
+        //     "includePath": [
+        //         "${workspaceFolder}/**",
+        //         "/usr/local/opencv4/include/opencv4"
+        //     ],
+        //     "intelliSenseMode": "gcc-x64",
+        //     "compilerPath": "/usr/bin/g++",
+        //     "cStandard": "c11",
+        //     "cppStandard": "c++17",
+        //     "defines": [
+        //         "_DEBUG",
+        //         "UNICODE",
+        //         "_UNICODE"
+        //     ]
+        // },
+        {
+            "name": "Win64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/include",
+                "C:/Users/henryzhu/OneDrive/Programming/Cpp/CppLibrary/Opencv/mingw-build/install/include"
+            ],
+            "compilerPath": "C:/Users/henryzhu/OneDrive/Programming/mingw-x64/mingw64/bin/gcc.exe"
+        }
+    ],
+    "version": 4
+}
