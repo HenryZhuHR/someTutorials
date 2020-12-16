@@ -20,3 +20,4 @@ edit in workstation-DELL
 edit in laptop-MateBook14
 ```
 
+cmake -G "MinGW Makefiles" ..
