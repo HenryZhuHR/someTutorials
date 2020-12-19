@@ -11,8 +11,13 @@ void SolutionHello()
 
 Solution::Solution(/* args */)
 {
+    
 }
 
 Solution::~Solution()
 {
+}
+void Solution::Hello()
+{
+std::cout << "class Solution Hello" << std::endl;
 }

@@ -20,7 +20,7 @@
             "name": "Win64",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/src/include",
+                "${workspaceFolder}/include",
                 "C:/Users/henryzhu/OneDrive/Programming/Cpp/CppLibrary/Opencv/mingw-build/install/include"
             ],
             "compilerPath": "C:/Users/henryzhu/OneDrive/Programming/mingw-x64/mingw64/bin/gcc.exe"
