@@ -1,67 +1,66 @@
 #define __DEMO_H__
 #ifdef __DEMO_H__
+#include <iostream>
 
-using namespace std;
 #include <list>
-
-// ³éÏó¹Û²ìÕß
+using namespace std;
+// æŠ½è±¡è§‚å¯Ÿè€…
 class Observer
 {
 public:
-	// ÉùÃ÷ÏìÓ¦¸üĞÂ·½·¨
-	virtual void update() = 0;
+  // å£°æ˜å“åº”æ›´æ–°æ–¹æ³•
+  virtual void update() = 0;
 };
 
-// ¾ßÌå¹Û²ìÕß
-class ConcreteObserver:public Observer
+// å…·ä½“è§‚å¯Ÿè€…
+class ConcreteObserver : public Observer
 {
 public:
-	// ÊµÏÖÏìÓ¦¸üĞÂ·½·¨
-	void update(){
-		// ¾ßÌå²Ù×÷
-	}
+  // å®ç°å“åº”æ›´æ–°æ–¹æ³•
+  void update()
+  {
+    // å…·ä½“æ“ä½œ
+  }
 };
 
-// ³éÏóÄ¿±ê
+// æŠ½è±¡ç›®æ ‡
 class Subject
 {
 public:
-	// Ìí¼Ó¹Û²ìÕß
-	void attach(Observer* obs){
-		obsList.push_back(obs);
-	}
-	// ÒÆ³ı¹Û²ìÕß
-	void detach(Observer* obs){
-		obsList.remove(obs);
-	}
-	// ÉùÃ÷Í¨Öª·½·¨
-	virtual void notify() = 0;
+  // æ·»åŠ è§‚å¯Ÿè€…
+  void attach(Observer* obs) { obsList.push_back(obs); }
+  // ç§»é™¤è§‚å¯Ÿè€…
+  void detach(Observer* obs) { obsList.remove(obs); }
+  // å£°æ˜é€šçŸ¥æ–¹æ³•
+  virtual void notify() = 0;
+
 protected:
-	// ¹Û²ìÕßÁĞ±í
-	list<Observer*>obsList;
+  // è§‚å¯Ÿè€…åˆ—è¡¨
+  list<Observer*> obsList;
 };
 
-// ¾ßÌåÄ¿±ê
-class ConcreteSubject :public Subject
+// å…·ä½“ç›®æ ‡
+class ConcreteSubject : public Subject
 {
 public:
-	// ÊµÏÖÍ¨Öª·½·¨
-	void notify(){
-		// ¾ßÌå²Ù×÷
-		// ±éÀúÍ¨Öª¹Û²ìÕß¶ÔÏó
-		for (int i = 0; i < obsList.size(); i++){
-			obsList[i]->update();
-		}
-	}
+  // å®ç°é€šçŸ¥æ–¹æ³•
+  void notify()
+  {
+    // å…·ä½“æ“ä½œ
+    // éå†é€šçŸ¥è§‚å¯Ÿè€…å¯¹è±¡
+    list<Observer*>::iterator iter;
+    for (iter = this->obsList.begin(); iter != this->obsList.end(); iter++)
+      (*iter)->update();
+  }
 };
 
-// ¿Í»§¶Ë´úÂëÊ¾Àı
+// å®¢æˆ·ç«¯ä»£ç ç¤ºä¾‹
 int main()
 {
-	Subject  *sub = new ConcreteSubject();
-	Observer *obs = new ConcreteObserver();
-	sub->attach(obs);
-	sub->notify();
-	return 0;
+  Subject*  sub = new ConcreteSubject();
+  Observer* obs = new ConcreteObserver();
+  sub->attach(obs);
+  sub->notify();
+  return 0;
 }
 #endif

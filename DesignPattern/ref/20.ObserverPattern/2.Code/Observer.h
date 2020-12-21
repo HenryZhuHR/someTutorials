@@ -6,54 +6,45 @@ using namespace std;
 #include "common.h"
 #include "AllyCenter.h"
 
-// ³éÏó¹Û²ìÕß Observer
+// æŠ½è±¡è§‚å¯Ÿè€… Observer
 class Observer
 {
-public:
-	Observer(){}
-	// ÉùÃ÷³éÏó·½·¨
-	virtual void call(INFO_TYPE infoType, AllyCenter* ac) = 0;
-	string getName(){
-		return name;
-	}
-	void setName(string iName){
-		this->name = iName;
-	}
 private:
-	string name;
+  string name;
+
+public:
+  Observer() {}
+  // å£°æ˜æŠ½è±¡æ–¹æ³•
+  virtual void call(INFO_TYPE infoType, AllyCenter* ac) = 0;
+  string       getName() { return name; }
+  void         setName(string iName) { this->name = iName; }
 };
 
-// ¾ßÌå¹Û²ìÕß 
-class Player :public Observer
+// å…·ä½“è§‚å¯Ÿè€…
+class Player : public Observer
 {
 public:
-	Player(){
-		setName("none");
-	}
-	Player(string iName){
-		setName(iName);
-	}
-	// ÊµÏÖ
-	void call(INFO_TYPE infoType, AllyCenter* ac){
-		switch (infoType){
-		case RESOURCE:
-			printf("%s :ÎÒÕâÀïÓĞÎï×Ê\n", getName().c_str());
-			break;
-		case HELP:
-			printf("%s :¾È¾ÈÎÒ\n", getName().c_str());
-			break;
-		default:
-			printf("Nothing\n");
-		}
-		ac->notify(infoType, getName());
-	}
-	// ÊµÏÖ¾ßÌå·½·¨
-	void help(){
-		printf("%s:¼á³Ö×¡£¬ÎÒÀ´¾ÈÄã£¡\n", getName().c_str());
-	}
-	void come(){
-		printf("%s:ºÃµÄ£¬ÎÒÀ´È¡Îï×Ê\n", getName().c_str());
-	}
+  Player() { setName("none"); }
+  Player(string iName) { setName(iName); }
+  // å®ç°
+  void call(INFO_TYPE infoType, AllyCenter* ac)
+  {
+    switch (infoType)
+    {
+    case RESOURCE:
+      printf("%s :æˆ‘è¿™é‡Œæœ‰ç‰©èµ„\n", getName().c_str());
+      break;
+    case HELP:
+      printf("%s :æ•‘æ•‘æˆ‘\n", getName().c_str());
+      break;
+    default:
+      printf("Nothing\n");
+    }
+    ac->notify(infoType, getName());
+  }
+  // å®ç°å…·ä½“æ–¹æ³•
+  void help() { printf("%s:åšæŒä½ï¼Œæˆ‘æ¥æ•‘ä½ ï¼\n", getName().c_str()); }
+  void come() { printf("%s:å¥½çš„ï¼Œæˆ‘æ¥å–ç‰©èµ„\n", getName().c_str()); }
 };
 
 #endif

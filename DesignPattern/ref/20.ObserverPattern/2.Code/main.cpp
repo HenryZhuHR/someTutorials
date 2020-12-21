@@ -1,39 +1,37 @@
+// g++ -fexec-charset=GBK main.cpp AllyCenter.cpp -o main && ./main.exe
 #include "Observer.h"
 #include "AllyCenter.h"
 
 int main()
 {
-	// ´´½¨Ò»¸öÕ½¶Ó
-	AllyCenterController* controller = new AllyCenterController();
+  // åˆ›å»ºä¸€ä¸ªæˆ˜é˜Ÿ
+  AllyCenterController* controller = new AllyCenterController();
 
-	// ´´½¨4¸öÍæ¼Ò£¬²¢¼ÓÈëÕ½¶Ó
-	Player* Jungle = new Player("Jungle");
-	Player* Single = new Player("Single");
-	Player* Jianmengtu = new Player("¼úÃÈÍÃ");
-	Player* SillyDog = new Player("Éµ×Ó¹·");
-	controller->join(Jungle);
-	controller->join(Single);
-	controller->join(Jianmengtu);
-	controller->join(SillyDog);
+  // åˆ›å»º4ä¸ªçŽ©å®¶ï¼Œå¹¶åŠ å…¥æˆ˜é˜Ÿ
+  Player* Jungle     = new Player("Jungle");
+  Player* Single     = new Player("Single");
+  Player* Jianmengtu = new Player("è´±èŒå…”");
+  Player* SillyDog   = new Player("å‚»å­ç‹—");
+  controller->join(Jungle);
+  controller->join(Single);
+  controller->join(Jianmengtu);
+  controller->join(SillyDog);
 
-	printf("\n\n");
+  printf("\n\n");
 
-	// Jungle·¢ÏÖÎï×Ê£¬ºô½Ð¶ÓÓÑ
-	Jungle->call(RESOURCE, controller);
+  // Jungleå‘çŽ°ç‰©èµ„ï¼Œå‘¼å«é˜Ÿå‹
+  Jungle->call(RESOURCE, controller);
 
-	printf("\n\n");
+  printf("\n\n");
 
-	// Éµ×Ó¹·Óöµ½Î£ÏÕ£¬Çó¾È¶ÓÓÑ
-	SillyDog->call(HELP, controller);
+  // å‚»å­ç‹—é‡åˆ°å±é™©ï¼Œæ±‚æ•‘é˜Ÿå‹
+  Single->call(HELP, controller);
 
-	printf("\n\n");
-	system("pause");
+  delete controller;
+  delete Jungle;
+  delete Single;
+  delete Jianmengtu;
+  delete SillyDog;
 
-	delete controller;
-	delete Jungle;
-	delete Single;
-	delete Jianmengtu;
-	delete SillyDog;
-
-	return 0;
+  return 0;
 }

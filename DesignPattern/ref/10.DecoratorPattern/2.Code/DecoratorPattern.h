@@ -17,18 +17,19 @@ public:
   void operation() { printf("Phone\n"); }
 };
 
+
 //抽象装饰类
 class Decorator : public Component
 {
+private:
+  Component* component;
+
 public:
   Decorator() {}
   Decorator(Component* c) { this->component = c; }
   void       operation() { this->component->operation(); }
   Component* getComponent() { return this->component; }
   void       setComponent(Component* c) { this->component = c; }
-
-private:
-  Component* component;
 };
 
 //具体装饰类：手机壳

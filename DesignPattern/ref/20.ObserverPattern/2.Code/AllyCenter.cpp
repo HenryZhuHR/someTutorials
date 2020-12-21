@@ -1,55 +1,61 @@
 #include "AllyCenter.h"
 #include "Observer.h"
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
 
 /***********   AllyCenter    ****************/
-AllyCenter::AllyCenter(){
-	printf("´ó¼ª´óÀû£¬½ñÍí³Ô¼¦!\n");
-}
+AllyCenter::AllyCenter() { printf("å¤§å‰å¤§åˆ©ï¼Œä»Šæ™šåƒé¸¡!\n"); }
 
-// ¼ÓÈëÍæ¼Ò
-void AllyCenter::join(Observer* player){
-	if (playerList.size() == 4){
-		printf("Íæ¼ÒÒÑÂú\n");
-		return;
-	}
-	printf("Íæ¼Ò %s ¼ÓÈë\n", player->getName().c_str());
-	playerList.push_back(player);
-	if (playerList.size() == 4){
-		printf("×é¶Ó³É¹¦£¬²»ÒªËË£¬Ò»ÆðÉÏ£¡\n");
-	}
+// åŠ å…¥çŽ©å®¶
+void AllyCenter::join(Observer* player)
+{
+  if (playerList.size() == 4)
+  {
+    printf("çŽ©å®¶å·²æ»¡\n");
+    return;
+  }
+  printf("çŽ©å®¶ %s åŠ å…¥\n", player->getName().c_str());
+  playerList.push_back(player);
+  if (playerList.size() == 4)
+  {
+    printf("ç»„é˜ŸæˆåŠŸï¼Œä¸è¦æ€‚ï¼Œä¸€èµ·ä¸Šï¼\n");
+  }
 }
-// ÒÆ³ýÍæ¼Ò
-void AllyCenter::remove(Observer* player){
-	printf("Íæ¼Ò %s ÍË³ö\n", player->getName().c_str());
-	//playerList.remove(player);
+// ç§»é™¤çŽ©å®¶
+void AllyCenter::remove(Observer* player)
+{
+  printf("çŽ©å®¶ %s é€€å‡º\n", player->getName().c_str());
+  // playerList.remove(player);
 }
 /***********   AllyCenter    ****************/
 
 
 /**********   AllyCenterController    *******/
-AllyCenterController::AllyCenterController(){
+AllyCenterController::AllyCenterController() {}
 
-}
-
-// ÊµÏÖÍ¨Öª·½·¨
-void AllyCenterController::notify(INFO_TYPE infoType, std::string name){
-	switch (infoType){
-	case RESOURCE:
-		for each (Observer* obs in playerList){
-			if (obs->getName() != name){
-				((Player*)obs)->come();
-			}
-		}
-		break;
-	case HELP:
-		for each (Observer* obs in playerList){
-			if (obs->getName() != name){
-				((Player*)obs)->help();
-			}
-		}
-		break;
-	default:
-		printf("Nothing\n");
-	}
+// å®žçŽ°é€šçŸ¥æ–¹æ³•
+void AllyCenterController::notify(INFO_TYPE infoType, std::string name)
+{
+  if (infoType == RESOURCE)
+  {
+    // for each (Observer* obs in playerList)
+    //   if (obs->getName() != name)
+    //     ((Player*)obs)->come();
+    for (auto obs : this->playerList)
+      if (obs->getName() != name)
+        ((Player*)obs)->come();
+  }
+  else if (infoType == HELP)
+  {
+    for (auto obs : this->playerList)
+      if (obs->getName() != name)
+        ((Player*)obs)->help();
+  }
+  else
+  {
+    printf("Nothing\n");
+  }
 }
 /**********   AllyCenterController    *******/

@@ -1,4 +1,0 @@
-# DeepLearning
-
-
-Artificial Neural Networks
