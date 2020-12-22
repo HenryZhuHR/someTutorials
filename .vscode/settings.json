@@ -1,5 +1,5 @@
 {
-    // "terminal.integrated.shell.windows": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    
     "files.associations": {
         "*.md": "markdown",
         "*.cjson": "jsonc",
@@ -53,6 +53,7 @@
         "thread": "cpp",
         "typeinfo": "cpp"
     },
+    // "terminal.integrated.shell.windows": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
     // "terminal.integrated.shell.windows": "C:/Windows/System32/wsl.exe",
     "terminal.integrated.shell.windows": "C:/Users/henryzhu/Programs/Git/bin/bash.exe",
     "python.pythonPath": "C:\\Users\\henryzhu\\Programs\\Python\\Python37\\python.exe",
