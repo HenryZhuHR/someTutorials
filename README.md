@@ -6,6 +6,7 @@
 - [ ] [Deep Learning](deepLearning/deepLearning.md) | [深度学习](deepLearning/deepLearning_cn.md)
 - [ ] [STM32](stm32/stm32.md)
 - [ ] [Leetcode 刷题](leetcode/README.md)
+- [ ] [Ubuntu MacOS 化](linux/wsl2/desktop-MacOS.md)
 
 
 
