@@ -26,6 +26,9 @@ export JAVA_HOME CLASSPATH PATH
 
 ```bash
 source ~/.bashrc
+```
+或
+```bash
 source /etc/profile
 ```
 
