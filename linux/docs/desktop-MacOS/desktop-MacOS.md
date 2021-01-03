@@ -7,6 +7,8 @@
     - [Catalina](#catalina)
   - [安装](#安装)
 - [Dash to Dock](#dash-to-dock)
+- [最终效果](#最终效果)
+- [返回主目录](#返回主目录)
 
 
 # 安装 TweakTool
@@ -74,3 +76,12 @@ sudo apt install -y chrome-gnome-shell
 ![启动 dash to dock](img/dash-to-dock-start.png)
 
 点击齿轮按钮，可以修改dock
+
+
+# 最终效果
+
+![最终效果](./img/finalDesktop.png)
+
+
+# 返回主目录
+[README.md](../../../README.md)

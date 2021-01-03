@@ -1,8 +1,10 @@
 # Linux-Ubuntu
 - [Linux-Ubuntu](#linux-ubuntu)
+- [目录](#目录)
 - [环境变量](#环境变量)
 - [安装常用的软件](#安装常用的软件)
 
+# 目录
 
 # 环境变量
 - 修改家目录下的 .bashrc 文件
