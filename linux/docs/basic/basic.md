@@ -2,6 +2,7 @@
 - [Linux-Ubuntu](#linux-ubuntu)
 - [目录](#目录)
 - [环境变量](#环境变量)
+- [软链接](#软链接)
 - [安装常用的软件](#安装常用的软件)
 
 # 目录
@@ -33,7 +34,12 @@ source ~/.bashrc
 ```bash
 source /etc/profile
 ```
-
+# 软链接
+```bash
+sudo rm /usr/bin/python
+sudo ln -s /usr/bin/python3 /usr/bin/python
+ls -l /usr/bin | grep python
+```
 
 # 安装常用的软件
 ```bash
