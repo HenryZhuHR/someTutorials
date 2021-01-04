@@ -12,3 +12,5 @@ else:
 shutil.copytree(src_dir, dst_dir)
 
 # git add .
+# git commit -m "update"
+# git push origin master
