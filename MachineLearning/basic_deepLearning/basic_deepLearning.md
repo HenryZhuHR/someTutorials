@@ -14,6 +14,7 @@
 - [神经网络总结](#神经网络总结)
 - [神经网络的应用例子：实现 XOR](#神经网络的应用例子实现-xor)
 - [Tensorflow](#tensorflow)
+  - [梯度下降](#梯度下降)
 
 
 阅读建议：建议多次**反复**阅读反向传播过程，并且请一定要**拿笔推导**公式
@@ -546,6 +547,8 @@ $$\begin{aligned}
 
 **反向传播过程**
 
+由后（损失函数）向前（输入），逐层求损失函数对每层神经元参数的偏导数，迭代更新所有参数。
+
 **梯度求导**
 
 沿着损失函数梯度下降的方向，寻找损失函数的极小值（最小值），得到局部最优解（全局最优解）的方法。
@@ -553,7 +556,7 @@ $$\begin{aligned}
     param_{new}=param-lr \times \frac{\partial loss}{\partial param}
 \end{aligned}$$
  
-**学习率** (learning rate, lr):
+**学习率** (learning rate, lr): 学习率是梯度下降的速度，是一个超参数。学习率设置过小，收敛过程会十分缓慢。学习率过大时，梯度会在最小值附近来回振荡，甚至无法收敛。
 
 
 - **损失函数** (Loss Function)
@@ -573,5 +576,20 @@ $$\begin{aligned}
 <!-- Neural Networks -->
 
 # Tensorflow 
+## 梯度下降
+```python
+import tensorflow as tf
 
+w=tf.Variable(tf.constant(5,dtype=tf.float32))
+lr=0.1
+epoch=40
+
+for epoch in range(epoch):
+    with tf.GradientTape() as tape:
+        loss=tf.square(w+1)
+    grads=tape.gradient(loss,w)
+    w.assign_sub(lr*grads)
+
+    print("epoch: %s\tw: %f\tloss: %f"%(epoch,w,loss))
+```
 
