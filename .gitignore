@@ -1,5 +1,5 @@
 *.exe
 
 
-*.ppt
-*.pptx
+# *.ppt
+# *.pptx
