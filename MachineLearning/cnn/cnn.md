@@ -1,6 +1,7 @@
 # 卷积神经网络
 - [卷积神经网络](#卷积神经网络)
 - [Relu 函数](#relu-函数)
+- [CNN 网络架构](#cnn-网络架构)
 
 
 <!-- https://www.zybuluo.com/hanbingtao/note/485480 -->
@@ -38,4 +39,15 @@ $$\begin{aligned}
 Relu函数的有如下优势
 - **计算速度快**
 - **减轻梯度消失**，
+  ![d(sigmod)/dx](img/derivativeOfSigmoid.png)
+
+
 - **稀疏性**，通过对大脑的研究发现，大脑在工作的时候只有大约5%的神经元是激活的，而采用sigmoid激活函数的人工神经网络，其激活率大约是50%。有论文声称人工神经网络在15%-30%的激活率时是比较理想的。因为relu函数在输入小于0时是完全不激活的，因此可以获得一个更低的激活率。
+
+# CNN 网络架构
+![CNN Architecture](img/NetworkArchitecture.png)
+
+CNN 网络架构 (Architecture) 包括:
+- **卷积层** (Convolution Layer)
+- **池化层** (Polling Layer)
+- **全连接层** (Fully Connected Layer)
