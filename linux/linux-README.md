@@ -16,7 +16,7 @@
 ## Linux 下 Nvidia 安装
 [Linux 下 Nvidia 安装](docs/install/nvidia/nvidia.md)
 
-![Nvidia 驱动](docs/install/nvidia/img/nvidia-settings-gpu.png)
+![Nvidia 驱动](docs/install/nvidia/img/nvidia-settings-gpu-aft.png)
 
 ## Linux 下 OpenCV 源码编译
 [Linux 下 OpenCV 源码编译](docs/install/opencv/opencv.md)
