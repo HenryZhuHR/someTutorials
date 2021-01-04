@@ -84,4 +84,4 @@ sudo apt install -y chrome-gnome-shell
 
 
 # 返回主目录
-[README.md](https://github.com/HenryZhuHR/someTutorials)
+[README.md](../../../README.md)
