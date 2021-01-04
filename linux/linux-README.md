@@ -9,9 +9,12 @@
 # Ubuntu 软件安装
 ## Ubuntu 界面 MacOS 化
 [Ubuntu 界面 MacOS 化](docs/install/desktop-MacOS/desktop-MacOS.md)
+![最终效果](docs/install/desktop-MacOS/img/finalDesktop.png)
+
 
 ## Linux 下 Nvidia 安装
 [Linux 下 Nvidia 安装](docs/install/nvidia/nvidia.md)
+![Nvidia 驱动](docs/install/nvidia/img/nvidia-settings-gpu.png)
 
 ## Linux 下 OpenCV 源码编译
 [Linux 下 OpenCV 源码编译](docs/install/opencv/opencv.md)
