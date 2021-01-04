@@ -9,7 +9,7 @@
 # Ubuntu 软件安装
 ## Ubuntu 界面 MacOS 化
 [Ubuntu 界面 MacOS 化](docs/install/desktop-MacOS/desktop-MacOS.md)
-![最终效果](docs/install/desktop-MacOS/img/finalDesktop.png)
+![最终效果](docs/install/desktop-MacOS/img/finalDesktop-aft.png)
 
 
 ## Linux 下 Nvidia 安装
