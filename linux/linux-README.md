@@ -26,3 +26,7 @@
 
 # Linux 基础
 [Linux 基础](docs/basic/basic.md)
+
+- [环境变量](docs/basic/basic.md#环境变量)
+- [软链接](docs/basic/basic.md#软链接)
+- [安装常用的软件](docs/basic/basic.md#安装常用的软件)

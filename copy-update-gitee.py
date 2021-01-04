@@ -12,6 +12,14 @@ else:
 shutil.copytree(src_dir, dst_dir)
 pass
 
+
+os.chdir('../someTutorials-Linux')
+print(' -- pwd: ',os.getcwd())
+
+os.system('git add .')
+os.system('git commit -m "update"')
+os.system('git push origin master:master')
+
 # git add .
 # git commit -m "update"
 # git push origin main:main
