@@ -77,8 +77,8 @@ drwxr-xr-x 2 root root  4096 1月   3 17:11 bin
 
 
 # 环境变量
-- 修改家目录下的 .bashrc 文件
-- 修改 /etc/profile 文件
+- 修改用户目录下的 `.bashrc` 文件
+- 修改 `/etc/profile` 文件
 
 ```bash
 变量名=变量值
