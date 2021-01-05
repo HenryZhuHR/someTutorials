@@ -119,6 +119,13 @@ padding = 'VALID'   # 非全零填充
 ```
 # 批标准化 (Batch Normalization, BN)
 # 池化 (Pooling)
+**池化层**的作用主要是进行**下采样**，以减少参数量。
+
+池化的方式一般有
+- Max Pooling : 
+- Mean Pooling : 
+
+
 # 舍弃 (Dropout)
 
 # CNN 网络架构
