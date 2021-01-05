@@ -1,11 +1,16 @@
 # 目录
 - [目录](#目录)
+- [WSL (Windows Subsystem for Linux)](#wsl-windows-subsystem-for-linux)
 - [Ubuntu 软件安装](#ubuntu-软件安装)
   - [Ubuntu 更换软件源](#ubuntu-更换软件源)
   - [Ubuntu 界面 MacOS 化](#ubuntu-界面-macos-化)
   - [Linux 下 Nvidia 安装](#linux-下-nvidia-安装)
   - [Linux 下 OpenCV 源码编译](#linux-下-opencv-源码编译)
 - [Linux 基础](#linux-基础)
+
+# WSL (Windows Subsystem for Linux)
+[WSL](docs/install/wsl2/wsl2.md) 是在 Windows 10 上安装适用于 Linux 的 Windows 子系统。
+
 
 # Ubuntu 软件安装
 ## Ubuntu 更换软件源
