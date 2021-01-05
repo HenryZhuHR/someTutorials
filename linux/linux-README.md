@@ -5,6 +5,7 @@
   - [Linux 下 Nvidia 安装](#linux-下-nvidia-安装)
   - [Linux 下 OpenCV 源码编译](#linux-下-opencv-源码编译)
 - [Linux 基础](#linux-基础)
+- [Ubuntu 换源](#ubuntu-换源)
 
 # Ubuntu 软件安装
 ## Ubuntu 界面 MacOS 化
@@ -30,3 +31,30 @@
 - [环境变量](docs/basic/basic.md#环境变量)
 - [软链接](docs/basic/basic.md#软链接)
 - [安装常用的软件](docs/basic/basic.md#安装常用的软件)
+
+# Ubuntu 换源
+```bash
+# 备份软件源配置文件 /etc/apt/sources.list
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+# 编辑 /etc/apt/sources.list
+sudo vim /etc/apt/sources.list
+```
+
+对于 **Ubuntu 20.04 LTS** 版本
+```bash
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+其他发行版本的 Ubuntu 可以在[清华大学开源软件镜像站 Ubuntu 镜像使用帮助](https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/) 查到对应的`软件源配置文件内容`
