@@ -13,7 +13,7 @@ print(filter_tensor)
 
 result = tf.nn.conv2d(img_tensor,
                       filter_tensor,
-                      strides=[1, 1, 1, 1],
+                      strides=[1, 2, 2, 1],
                       padding='VALID')
 import pprint
 pprint.pprint(result)

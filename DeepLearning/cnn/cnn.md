@@ -2,6 +2,8 @@
 - [目录](#目录)
 - [Relu 函数](#relu-函数)
 - [卷积计算过程](#卷积计算过程)
+  - [2D 卷积过程](#2d-卷积过程)
+  - [3D 卷积过程](#3d-卷积过程)
   - [TF描述卷积计算层](#tf描述卷积计算层)
 - [感受野](#感受野)
 - [全零填充 (Padding)](#全零填充-padding)
@@ -52,8 +54,43 @@ Relu函数的有如下优势
 - **稀疏性**，通过对大脑的研究发现，大脑在工作的时候只有大约5%的神经元是激活的，而采用sigmoid激活函数的人工神经网络，其激活率大约是50%。有论文声称人工神经网络在15%-30%的激活率时是比较理想的。因为relu函数在输入小于0时是完全不激活的，因此可以获得一个更低的激活率。
 
 # 卷积计算过程
+## 2D 卷积过程
+一个 $5 \times 5$ 的图像和一个 $3 \times 3$ 的 **2D卷积核** (**kernel**) 进行**步长** (**stride**) 为1的卷积计算可以得到一个 $3 \times 3$ 的**特性图** (**Feature Maps**)，卷积计算过程如下
+
 ![Conv2D](img/con2d.gif)
-2D
+
+图像 $x_{i,j}$ 和 kernel $\omega_{m,n}$ 进行卷积，$\omega_b$表示 kernel 的偏置项 
+
+$$\begin{aligned}
+  a_{p,q}=f(\sum_{m=0}^{2} \sum_{n=0}^{2} w_{m,n} x_{(m+1\times p),(n+1\times q)}+\omega_b)
+\end{aligned}$$
+$$\begin{aligned}
+  \quad 0 \leq p,q \leq 2 ,
+  \quad 0 \leq m,n \leq 2 ,
+\end{aligned}$$
+
+例如，计算 $a_{0,1}$ （这里不考虑激活函数的作用）
+$$\begin{aligned}
+  a_{0,1} &= \sum_{m=0}^{2} \sum_{n=0}^{2} w_{m,n} x_{(m+1\times 0),(n+1\times 1)}+\omega_b \\
+          &= \sum_{m=0}^{2} \sum_{n=0}^{2} w_{m,n} x_{(m),(n+1)}+0 \\
+          &= (2\times 0+3\times 1+1\times 0+
+              3\times 1+3\times 0+0\times 1+
+              0\times 0+1\times 1+2\times 0)+0 \\
+          &= 7
+\end{aligned}$$
+
+上面的卷积过程是步长为 1 的卷积过程，当步长为 2 的时候，卷积过程如下
+
+![Conv2D](img/con2d-stride_2.gif)
+
+$$\begin{aligned}
+  a_{p,q}=f(\sum_{m=0}^{2} \sum_{n=0}^{2} w_{m,n} x_{(m+2\times p),(n+2\times q)}+\omega_b)
+\end{aligned}$$
+
+## 3D 卷积过程
+![Conv3d](img/con3d-stride_1.gif)
+
+
 ## TF描述卷积计算层
 # 感受野
 **感受野（Receptive Field）** 定义是卷积神经网络每一层输出的特征图（feature map）上的像素点在输入图片上映射的区域大小。即，特征图上的一个点对应输入图上的区域
