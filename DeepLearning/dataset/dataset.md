@@ -1,12 +1,39 @@
 # 目录
 - [目录](#目录)
 - [数据集制作](#数据集制作)
+  - [图像标注](#图像标注)
 - [开源数据集下载](#开源数据集下载)
   - [数据集库](#数据集库)
   - [图像数据集](#图像数据集)
   - [音频数据集](#音频数据集)
 
 # 数据集制作
+## 图像标注
+
+<!-- https://blog.csdn.net/Dontla/article/details/102662815 -->
+LabelImg是图形图像注释工具。它是用Python编写的，并将Qt用于其图形界面。
+
+批注以 **PASCAL VOC** 格式（ImageNet使用的格式）另存为 `.xml` 文件。此外，它还支持 YOLO 格式
+
+[labelImg Github](https://github.com/tzutalin/labelImg)
+
+```bash
+pip install labelImg
+```
+|  快捷键  |           功能           |
+| :------: | :----------------------: |
+| Ctrl + u |    从目录加载所有图像    |
+| Ctrl + R |   更改默认注释目标目录   |
+| Ctrl + s |           储存           |
+| Ctrl + d |   复制当前标签和矩形框   |
+|  space   |  将当前图像标记为已验证  |
+|    w     |      创建一个矩形框      |
+|    d     |        下一张图片        |
+|    a     |        上一张图片        |
+|   del    |     删除选定的矩形框     |
+| Ctrl ++  |           放大           |
+|  Ctrl–   |           缩小           |
+|   ↑→↓←   | 键盘箭头移动选定的矩形框 |
 # 开源数据集下载
 ## 数据集库
 - [Tianchi Data Sets](https://tianchi.aliyun.com/dataset): 阿里系唯一对外开放数据分享平台
