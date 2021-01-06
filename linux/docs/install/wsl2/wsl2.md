@@ -11,6 +11,28 @@
 # 安装 WSL2 和 Ubuntu 子系统
 https://docs.microsoft.com/zh-cn/windows/wsl/
 
+Windows下需要打开 `控制面板-程序-启用或关闭 Windows 功能` 中的 `适用于 Linux 的 Windows 子系统`、`虚拟机平台`
+
+![启用或关闭 Windows 功能](img/启用或关闭%20Windows%20功能.png)
+
+下载 [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+
+打开 PowerShell，然后在安装新的 Linux 发行版时运行以下命令，将 WSL 2 设置为默认版本
+```bash
+wsl --set-default-version 2
+```
+
+检查分配给每个已安装的 Linux 分发版的 WSL 版本
+```bash
+wsl --list --verbose
+```
+
+
+设置 roo 用户
+```bash
+sudo passwd root
+```
+
 # Linux安装图形界面
 ## 安装 Gnome 桌面
 WSL 不支持 systemd 而 Gnome 桌面又是基于 systemd，所以先解决这个问题。（参考：https://github.com/DamionGans/ubuntu-wsl2-systemd-script）
