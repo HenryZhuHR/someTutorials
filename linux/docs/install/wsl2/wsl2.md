@@ -2,24 +2,17 @@
 - [文档导航](#文档导航)
 - [安装 WSL2 和 Ubuntu 子系统](#安装-wsl2-和-ubuntu-子系统)
 - [Linux安装图形界面](#linux安装图形界面)
-  - [准备工作](#准备工作)
   - [安装 Gnome 桌面](#安装-gnome-桌面)
   - [安装 Xrdp](#安装-xrdp)
   - [每次启动前运行的命令](#每次启动前运行的命令)
   - [登录远程桌面](#登录远程桌面)
 - [Ubuntu 准备工作](#ubuntu-准备工作)
-- [Ubuntu Mac 化](#ubuntu-mac-化)
-  - [安装 TweakTool](#安装-tweaktool)
-  - [安装主题](#安装主题)
-    - [安装GTK主题](#安装gtk主题)
-      - [Big Sur](#big-sur)
 
 # 安装 WSL2 和 Ubuntu 子系统
 https://docs.microsoft.com/zh-cn/windows/wsl/
 
 # Linux安装图形界面
-## 准备工作
-
+## 安装 Gnome 桌面
 WSL 不支持 systemd 而 Gnome 桌面又是基于 systemd，所以先解决这个问题。（参考：https://github.com/DamionGans/ubuntu-wsl2-systemd-script）
 ```bash
 sudo apt update
@@ -30,8 +23,6 @@ bash ubuntu-wsl2-systemd-script.sh
 ```
 重新启动子系统，或者重启电脑也行。
 
-
-## 安装 Gnome 桌面
 ```bash
 sudo apt update
 sudo apt install -y ubuntu-desktop
