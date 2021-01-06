@@ -27,6 +27,7 @@ wsl --set-default-version 2
 wsl --list --verbose
 ```
 
+启动
 
 设置 roo 用户
 ```bash
