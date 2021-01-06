@@ -2,13 +2,14 @@
 - [Usage of Darknet](#usage-of-darknet)
 - [工程结构](#工程结构)
 - [编译](#编译)
+  - [Requirements](#requirements)
   - [编译 CPU 版本](#编译-cpu-版本)
   - [编译 GPU 版本](#编译-gpu-版本)
     - [安装 Nvidia 驱动](#安装-nvidia-驱动)
     - [安装 CUDA](#安装-cuda)
     - [安装 cuDNN](#安装-cudnn)
-    - [修改makefile](#修改makefile)
-    - [编译 gpu 版本](#编译-gpu-版本-1)
+    - [CMake 编译](#cmake-编译)
+    - [makefile 编译](#makefile-编译)
 - [训练](#训练)
 
 # 工程结构
@@ -61,6 +62,13 @@ tree -d
 
 
 # 编译
+## Requirements
+- **CMake** >= 3.12
+- **CUDA** >= 10.0
+- **OpenCV** >= 2.4
+- **cuDNN** >= 7.0
+- **GPU** with CC >= 3.0: https://en.wikipedia.org/wiki/CUDA#GPUs_supported
+- **GCC** or **Clang** on Linux
 
 ## 编译 CPU 版本
 在当前目录下
@@ -213,20 +221,31 @@ sudo chmod a+r /usr/local/cuda-10.1/include/cudnn.h
 sudo chmod a+r /usr/local/cuda-10.1/lib64/libcudnn*
 ```
 
-### 修改makefile
+### CMake 编译
+
+Darknet 要求 CMake>= 3.12，可以从官网[下载](https://cmake.org/download/)后进行源码编译，也可以用 `apt` 进行安装
+```bash
+sudo apt install -y cmake
+```
+运行脚本进行编译
+```bash
+bash ./build.sh
+```
+编译完成后，测试程序
+```bash
+$ ./build_release/darknet
+usage: ./darknet <function>
+```
+
+### makefile 编译
 
 在 [Makefile](./Makefile) 文件中（大约 1～9 行）
-将
+将下列变量的值改为 `1`
 ```makefile
-GPU=0
-CUDNN=0
-CUDNN_HALF=0
-OPENCV=0
-# 修改为
-GPU=1
-CUDNN=1
-CUDNN_HALF=0
-OPENCV=1
+GPU=1     # 编译 GPU 版本
+CUDNN=1   # 与 CUDA 联合
+OPENCV=1  # 与 OpenCV 联合编译
+LIBSO=1   # 编译动态链接库 .so
 ```
 
 - nvcc 路径
@@ -237,8 +256,6 @@ NVCC=nvcc
 # 改成
 NVCC=/usr/local/cuda-10.1/bin/nvcc
 ```
-
-- nvcc 路径
 
 在 [Makefile](./Makefile) 文件中（大约 117 行）
 ```bash
@@ -273,28 +290,67 @@ CFLAGS+= -DCUDNN -I/usr/local/cuda-10.1/include
 LDFLAGS+= -L/usr/local/cuda-10.1/lib -lcudnn
 ```
 
-
-### 编译 gpu 版本
-然后在当前目录下进行编译
+修改完 Makefile之后，在当前目录下进行编译
 ```bash
 make
 ```
 
-编译完成后
+编译完成后，测试程序
 ```bash
 $ ./darknet
 usage: ./darknet <function>
 ```
-测试
-```bash
-./darknet imtest data/eagle.jpg
-```
+
 
 # 训练
 https://blog.csdn.net/u010122972/article/details/83541978
  
 为了提高训练速度，请使用 GPU 版本
 
+- 预训练权值文件
+
+下载预训练权值文件 : [yolov4.conv.137](https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137) (162 MB) ,或在[Google drive 镜像](https://drive.google.com/open?id=1JKF-bdIklxOOVy-2Cr5qdvjgGpmGfcbp)下载
+
+- 修改训练配置文件
+
+创建文件 `yolo-obj.cfg` 其内容和 `yolov4-custom.cfg` 一样 (或者复制 `yolov4-custom.cfg` 为 `yolo-obj.cfg`) 
+```bash
+cp cfg/yolov4-custom.cfg cfg/yolov4-obj.cfg
+```
 
 
 
+```bash
+[net]
+# Testing
+#batch=1
+#subdivisions=1
+# Training
+batch=64
+subdivisions=16
+width=608
+height=608
+channels=3
+momentum=0.949
+decay=0.0005
+angle=0
+saturation = 1.5
+exposure = 1.5
+hue=.1
+
+learning_rate=0.001
+burn_in=1000
+max_batches = 500500
+policy=steps
+steps=400000,450000
+scales=.1,.1
+
+#cutmix=1
+mosaic=1
+
+#:104x104 54:52x52 85:26x26 104:13x13 for 416
+```
+
+- 修改 filter 参数
+
+change [filters=255] to filters=(classes + 5)x3 in the 3 [convolutional] before each [yolo] layer, keep in mind that it only has to be the last [convolutional] before each of the [yolo] layers.
