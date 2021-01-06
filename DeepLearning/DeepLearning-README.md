@@ -1,6 +1,7 @@
 # 目录
 - [x] [深度学习基础（神经网络）](basic_deepLearning/basic_deepLearning.md)
 - [ ] [卷积神经网络 CNN](cnn/cnn.md)
+- [ ] [循环神经网络 CNN](cnn/cnn.md)
 
 <!-- # 模型评估与选择
 **误差** (error)  
