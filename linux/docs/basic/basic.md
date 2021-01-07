@@ -81,28 +81,36 @@ drwxr-xr-x 2 root root  4096 1月   3 17:11 bin
 - 修改 `/etc/profile` 文件
 
 ```bash
-变量名=变量值
-...=...
-export 变量名 ...
+export PATH="{path_to_bin}:$PATH"
 ```
 
-如：
+例如，我们现在希望将一个自己编译的程序添加到环境变量中，便于启动
+
+在 `~/proj/test` 目录下编写文件 `hellotest.c`，并且编译 `gcc hellotest.c -o hellotest`，运行 `./hellotest` 输出 `Hello test`
+![img/env-1.png](img/env-1.png)
+
+我们现在希望可以在其他目录下也可以启动该程序，这时候会找不到该命令，因为在环境变量中没有找到该命令
+![img/env-2.png](img/env-2.png)
+
+编辑用户目录下环境变量配置文件 `~/.bashrc` （或者系统级的环境变量配置文件 `/etc/profile`，该操作对全部用户生效）
 ```bash
-
-JAVA_HOME=/opt/jdk1.8.0_91
-CLASSPATH=.:./bin
-PATH=$JAVA_HOME/bin:$PATH
-export JAVA_HOME CLASSPATH PATH
+vi ~/.bashrc
 ```
+在文件末尾添加如下内容
+```bash
+export PATH="~/proj/test:$PATH"
+```
+![img/env-3.png](img/env-3.png)
 
-
+激活该配置文件作为系统的环境变量
 ```bash
 source ~/.bashrc
 ```
-或
-```bash
-source /etc/profile
-```
+之后就可以直接运行我们编译好的可执行文件 `hellotest` 
+![img/env-4.png](img/env-4.png)
+
+
+
 # 软链接
 ```bash
 sudo rm /usr/bin/python
