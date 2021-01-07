@@ -78,6 +78,25 @@ RGB图像一般包含三个颜色通道 (channel) ，因此对于RGB图像的卷
 
 ## tensorflow 描述卷积计算层
 
+```python
+tf.nn.conv3d(
+    input, filters, strides, padding, data_format='NDHWC', dilations=None, name=None
+)
+```
+
+参数：
+- `input` : `5-D` 张量，数据类型 `half`, `bfloat16`, `float32`, `float64`。 形状 `[batch, in_depth, in_height, in_width, in_channels].`
+- `filter`: 形状 `[filter_depth, filter_height, filter_width, in_channels,out_channels]`。`in_channels` must match between input and filters
+- `strides`: 滑动窗口对于input每个维度的步幅，`strides[0]=strides[4]=1`。 `[1,1,1,1,1]` 即可 
+- `padding`: 填充方式。
+  - `"SAME"` 全零填充
+  - `"VALID"` 非全零填充
+- `data_format='NDHWC'`: 输入和输出数据的数据格式。默认为 `'NDHWC'` 。
+  - `'NDHWC'`，数据存储顺序为：`[batch，in_depth，in_height，in_width，in_channels]`
+  - `'NCDHW'`，数据存储顺序为：`[batch，in_channels，in_depth，in_height，in_width]`
+
+最后，其输出结果的格式同输入，也为 `[batch, in_depth, in_height, in_width, in_channels]`
+
 # Relu 函数
 在全连接神经网络中，我们使用了 `Sigmoid`函数 作为激活函数来解决阶跃函数 `sgn` 不连续的特点。
 
