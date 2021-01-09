@@ -39,6 +39,7 @@
 1943年，该神经元模型由麦卡洛克 (McCulloch) 和屁茨 (Pitts) 提出的，因此也叫 **M-P 神经元模型**
 
 - 神经元模型如下
+
 ![Neural model](img/perceptron-neuron.png)
 <!-- <div align="center"><img src="img/neuron.png" width=60% /></div> -->
 
