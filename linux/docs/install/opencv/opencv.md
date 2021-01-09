@@ -77,6 +77,9 @@ bash ./install-opencv4.sh
 ```
 编译过程中可能会出现错误，具体解决方法可以参考 [解决编译时出现的错误](#解决编译时出现的错误)
 
+```bash
+-- Set runtime path of "/usr/local/opencv4/bin/opencv_version" to "/usr/local/opencv4/lib:/usr/local/cuda-11.0/lib64"
+```
 
 
 
@@ -119,7 +122,11 @@ source /etc/profile
 ```
 
 > 建议对于用户级的环境 `~/.bashrc` 也配置一次，在 `~/.bashrc` 中添加上述内容
+```bash
+vim ~/.bashrc
 
+source ~/.bashrc
+```
 
 验证是否配置完成：
 ```bash
