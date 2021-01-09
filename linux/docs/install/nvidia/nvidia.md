@@ -61,7 +61,8 @@ sudo ubuntu-drivers autoinstall
 ```
 
 # CUDA 安装
-对 gcc 和 g++ 降级
+
+对 gcc 和 g++ 降级(rug)
 ```bash
 sudo apt install -y gcc-8
 sudo mv /usr/bin/gcc /usr/bin/gcc.bak
