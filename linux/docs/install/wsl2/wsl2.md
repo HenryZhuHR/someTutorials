@@ -7,6 +7,7 @@
   - [每次启动前运行的命令](#每次启动前运行的命令)
   - [登录远程桌面](#登录远程桌面)
 - [Ubuntu 准备工作](#ubuntu-准备工作)
+- [SSH 远程连接](#ssh-远程连接)
 
 # 安装 WSL2 和 Ubuntu 子系统
 https://docs.microsoft.com/zh-cn/windows/wsl/
@@ -105,4 +106,47 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 其他发行版本的 Ubuntu 可以在[清华大学开源软件镜像站 Ubuntu 镜像使用帮助](https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/) 查到对应的`软件源配置文件内容`
 
 
+# SSH 远程连接
 
+重装原有SSH
+```bash
+sudo apt remove openssh-server
+sudo apt install openssh-server
+```
+
+> 先解释一下WSL的网络，作为子系统的Ubuntu Linux和Windows主系统的IP是一样的。如果在Linux上搭建了Nginx服务器，那么在Windows上的浏览器上输入localhost是可以访问Nginx服务的。如果在Linux上运行netstat -nlp是不会看到任何端口服务的。在Linux上启用端口服务的时候，Windows系统会弹出窗口，询问是否允许相关端口访问。
+
+WSL上的Ubuntu默认安装了openssh-server，也就是ssh服务的软件。但是，这个软件的配置是不完整的，如果启用服务，会报缺失几个密钥文件。为了解决这个问题，我们需要重新安装openssh-server：
+
+重新安装完还不行，因为WSL上的Ubuntu的SSH服务配置默认不允许密码方式登录，我们需要改配置：
+更改配置文件
+```bash
+sudo vim /etc/ssh/sshd_config
+```
+
+将以下配置复制到sshd_config配置文件
+```bash
+Port 2222                   #设置ssh的端口号, 由于22在windows中有别的用处, 尽量不修改系统的端口号
+PermitRootLogin yes         # 可以root远程登录
+PasswordAuthentication yes  # 允许密码验证登录
+AllowUsers ubutnu           # 远程登录时的用户名
+```
+
+重启sshd服务
+```bash
+sudo service ssh --full-restart
+```
+
+此时，我们可以在Ubuntu的Bash下连接自己测试，也可以用Windows的PowerShell连接Ubuntu来测试，命令都是一样的
+
+测试连接
+```bash
+ssh username@localhost:2222 	# username为安装WSL Ubuntu时输入的用户名
+```
+如果要在其它机器上访问，需要查找本机IP，把localhost换成IP，那么同一子网（wifi、路由器）下的机器也可访问Ubuntu里的服务。
+如果在其他机器上连接不成功看是不是Win10本地防火墙的2222端口没有放行，放行端口方法
+
+- 防火墙->高级设置->入站规则->新建规则
+- 端口->下一步
+- 选择tcp 特定本地端口 2222
+- 允许连接, 默认都选上, 下一步填个名字 完成
