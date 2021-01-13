@@ -1,35 +1,41 @@
 # 目录
 - [目录](#目录)
-- [基础](#基础)
+- [深度学习基础](#深度学习基础)
 - [神经网络框架](#神经网络框架)
   - [tensorflow](#tensorflow)
-- [SOTA](#sota)
-- [分类任务的网络模型](#分类任务的网络模型)
-- [图像检测的网络模型](#图像检测的网络模型)
-- [图像分割的网络模型](#图像分割的网络模型)
-- [理解CNN](#理解cnn)
-- [超分辨率重建](#超分辨率重建)
-- [图像标定](#图像标定)
-- [视频标注](#视频标注)
-- [特征检测与匹配（块）的网络模型](#特征检测与匹配块的网络模型)
+- [任务](#任务)
+  - [SOTA](#sota)
+  - [分类任务的网络模型](#分类任务的网络模型)
+  - [图像检测的网络模型](#图像检测的网络模型)
+  - [图像分割的网络模型](#图像分割的网络模型)
+  - [目标追踪](#目标追踪)
+  - [理解CNN](#理解cnn)
+  - [超分辨率重建](#超分辨率重建)
+  - [图像标定](#图像标定)
+  - [视频标注](#视频标注)
+  - [特征检测与匹配（块）的网络模型](#特征检测与匹配块的网络模型)
+  - [参考](#参考)
 
 
-# 基础
+# 深度学习基础
 - [x] [深度学习基础（神经网络）](basic_deepLearning/basic_deepLearning.md)
 - [ ] [卷积神经网络 CNN](cnn/cnn.md)
 - [ ] [循环神经网络 RNN](rnn/rnn.md)
+- [ ] [数据集处理](dataset/dataset.md)
 
 
 # 神经网络框架
 ## tensorflow
 [pip 软件包位置](https://tensorflow.google.cn/install/pip#package-location)
 
-# SOTA
+
+# 任务
+## SOTA
 SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任务上当前最优效果的模型。例如在图像分类任务上，某个模型在常用的数据集（如 ImageNet）上取得了当前最优的性能表现，我们就可以说这个模型达到了 SOTA。
 [机器之心 SOTA](https://www.jiqizhixin.com/sota)
 
 
-# 分类任务的网络模型
+## 分类任务的网络模型
 
 - [LeNet](http://yann.lecun.com/exdb/lenet/index.html)
 - [AlexNet](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
@@ -40,7 +46,7 @@ SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任
 - [ResNet](https://arxiv.org/pdf/1512.03385.pdf)
 - [InceptionV4（Inception-ResNet）](https://arxiv.org/pdf/1602.07261.pdf)
 
-# 图像检测的网络模型
+## 图像检测的网络模型
 基于图像分类的基础上所做的一些研究，即分类+定位。
 - [OVerfeat](https://arxiv.org/pdf/1312.6229.pdf)
 - [RNN](https://arxiv.org/pdf/1311.2524.pdf)
@@ -62,7 +68,7 @@ SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任
 - [PVANET](https://arxiv.org/pdf/1608.08021.pdf)
 - [Speed/accuracy trade-offs for modern convolutional object detectors](https://arxiv.org/pdf/1611.10012v1.pdf)
 
-# 图像分割的网络模型
+## 图像分割的网络模型
 
 - [FCN](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
 - [segNet](https://arxiv.org/pdf/1511.00561.pdf)
@@ -87,7 +93,7 @@ SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任
 - [MULTI-SCALE CONTEXT AGGREGATION BY DILATED CONVOLUTIONS](https://arxiv.org/pdf/1511.07122v2.pdf)
 - [Weakly supervised graph based semantic segmentation by learning communities of image-parts](http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Pourian_Weakly_Supervised_Graph_ICCV_2015_paper.pdf)
 
-目标追踪
+## 目标追踪
 
 经典网络：
 
@@ -123,7 +129,7 @@ Transferring Rich Feature Hierarchies for Robust Visual Tracking
 https://arxiv.org/pdf/1501.04587.pdf
 
 
-# 理解CNN
+## 理解CNN
 
 经典网络：
 
@@ -146,7 +152,7 @@ Understanding image representations by measuring their equivariance and equivale
 http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Lenc_Understanding_Image_Representations_2015_CVPR_paper.pdf
 
 
-# 超分辨率重建
+## 超分辨率重建
 
 经典模型：
 
@@ -179,7 +185,7 @@ https://arxiv.org/pdf/1609.04802v3.pdf
 
 
 
-# 图像标定
+## 图像标定
 
 经典模型：
 
@@ -241,7 +247,7 @@ GENERATING IMAGES FROM CAPTIONS WITH ATTENTION
 https://arxiv.org/pdf/1511.02793.pdf
 
 
-# 视频标注
+## 视频标注
 
 经典模型：
 
@@ -279,7 +285,7 @@ Deep Learning for Video Classification and Captioning
 https://arxiv.org/pdf/1609.06782.pdf
 
 
-# 特征检测与匹配（块）的网络模型
+## 特征检测与匹配（块）的网络模型
 - [TILDE: A Temporally Invariant Learned DEtector](https://arxiv.org/pdf/1411.4568.pdf)
 - [MatchNet: Unifying Feature and Metric Learning for Patch-Based Matching](https://pdfs.semanticscholar.org/81b9/24da33b9500a2477532fd53f01df00113972.pdf)
 - [Discriminative Learning of Deep Convolutional Feature Point Descriptors](http://cvlabwww.epfl.ch/~trulls/pdf/iccv-2015-deepdesc.pdf)
@@ -292,5 +298,7 @@ https://arxiv.org/pdf/1609.06782.pdf
 - [LIFT: Learned Invariant Feature Transform](https://arxiv.org/pdf/1603.09114.pdf)
   - [深度学习的特征点检测](https://blog.csdn.net/prephet/article/details/80797583)
 
+
+## 参考
 
 [参考](https://blog.csdn.net/wzz18191171661/article/details/70161595)
