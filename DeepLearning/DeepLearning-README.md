@@ -3,6 +3,7 @@
 - [深度学习基础](#深度学习基础)
 - [神经网络框架](#神经网络框架)
   - [tensorflow](#tensorflow)
+- [常用模型](#常用模型)
 - [任务](#任务)
   - [SOTA](#sota)
   - [分类任务的网络模型](#分类任务的网络模型)
@@ -20,14 +21,18 @@
 # 深度学习基础
 - [x] [深度学习基础（神经网络）](basic_deepLearning/basic_deepLearning.md)
 - [ ] [卷积神经网络 CNN](cnn/cnn.md)
-- [ ] [循环神经网络 RNN](rnn/rnn.md)
+<!-- - [ ] [循环神经网络 RNN](rnn/rnn.md) -->
 - [ ] [数据集处理](dataset/dataset.md)
+
+
 
 
 # 神经网络框架
 ## tensorflow
 [pip 软件包位置](https://tensorflow.google.cn/install/pip#package-location)
 
+# 常用模型
+- [ ] [Yolo darknet](network/dakrnet/darknet.md)
 
 # 任务
 ## SOTA
