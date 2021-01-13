@@ -26,7 +26,7 @@
 
 # SOTA
 SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任务上当前最优效果的模型。例如在图像分类任务上，某个模型在常用的数据集（如 ImageNet）上取得了当前最优的性能表现，我们就可以说这个模型达到了 SOTA。
-[sota](https://www.jiqizhixin.com/sota)
+[机器之心 SOTA](https://www.jiqizhixin.com/sota)
 
 
 # 分类任务的网络模型
