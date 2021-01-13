@@ -1,33 +1,8 @@
 # 目录
-- [x] [深度学习基础（神经网络）](basic_deepLearning/basic_deepLearning.md)
-- [ ] [卷积神经网络 CNN](cnn/cnn.md)
-- [ ] [循环神经网络 CNN](cnn/cnn.md)
-
-<!-- # 模型评估与选择
-**误差** (error)  
-实际预测输出和样本的真实输出之间的察隅
-
-**训练误差** (training error)  
-训练集上产生的误差
-
-**泛化误差** (generalization)  
-新样本上的误差
-
-
-**过拟合** (overfitting)  
-当学习器把训练样本学习得“太好”时，以至于把训练样本自身的一些特点当成潜在样本都具有的一般性质，会导致`泛化性能下降`
-
-**欠拟合** (underfitting)  
-训练样本的一般性质尚未学习好
-
-> 欠拟合是由学习能力低下造成的，是比较容易解决的，比如增加训练轮数等  
-> 过拟合不容易解决，需要预防 -->
-
-# SOTA
-SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任务上当前最优效果的模型。例如在图像分类任务上，某个模型在常用的数据集（如 ImageNet）上取得了当前最优的性能表现，我们就可以说这个模型达到了 SOTA。
-[sota](https://www.jiqizhixin.com/sota)
-
 - [目录](#目录)
+- [基础](#基础)
+- [神经网络框架](#神经网络框架)
+  - [tensorflow](#tensorflow)
 - [SOTA](#sota)
 - [分类任务的网络模型](#分类任务的网络模型)
 - [图像检测的网络模型](#图像检测的网络模型)
@@ -37,6 +12,22 @@ SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任
 - [图像标定](#图像标定)
 - [视频标注](#视频标注)
 - [特征检测与匹配（块）的网络模型](#特征检测与匹配块的网络模型)
+
+
+# 基础
+- [x] [深度学习基础（神经网络）](basic_deepLearning/basic_deepLearning.md)
+- [ ] [卷积神经网络 CNN](cnn/cnn.md)
+- [ ] [循环神经网络 RNN](rnn/rnn.md)
+
+
+# 神经网络框架
+## tensorflow
+[pip 软件包位置](https://tensorflow.google.cn/install/pip#package-location)
+
+# SOTA
+SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任务上当前最优效果的模型。例如在图像分类任务上，某个模型在常用的数据集（如 ImageNet）上取得了当前最优的性能表现，我们就可以说这个模型达到了 SOTA。
+[sota](https://www.jiqizhixin.com/sota)
+
 
 # 分类任务的网络模型
 

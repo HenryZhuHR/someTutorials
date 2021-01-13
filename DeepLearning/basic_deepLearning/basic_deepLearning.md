@@ -53,19 +53,25 @@
 神经元的工作过程如下：
 
 $x_i$ 是来自第 $i$ 个神经元的输入，每个神经元会接收到 $n$ 个神经元的输入。每个输入值会占据一定的权重 $\omega_i x_i$ 所有输入 ($n$ 个输入) 加权后进行累加
-$$\begin{aligned}
+$$
+\begin{aligned}
   \sum_{i=1}^{n}\omega_i x_i=\omega_1 x_1+ \omega_2 x_2+ ...+ \omega_n x_n
-\end{aligned}$$
+\end{aligned}
+$$
 
 当该累加值超过一定的阈值 $\theta$ 之后，该神经元就会被“激活”
-$$\begin{aligned}
+$$
+\begin{aligned}
   f(\sum_{i=1}^{n}\omega_i x_i-\theta)
-\end{aligned}$$
+\end{aligned}
+$$
 
 该神经元“激活”之后，就会向其他神经元发送信息，这个信息就是该神经元的输出 $y$
-$$\begin{aligned}
+$$
+\begin{aligned}
   y=f(\sum_{i=1}^{n}\omega_i x_i-\theta)
-\end{aligned}$$
+\end{aligned}
+$$
 
 - 为什么要加权 $\omega_i$？
 > 每个输入信息对于结果会有不同的影响，而我们需要衡量每个输入对于结果产生的影响的程度就需要这样一个权重。  
@@ -83,28 +89,30 @@ $$\begin{aligned}
 - 激活函数
 > **理想**的**激活函数**是一个**阶跃函数**，如下  
 > <div align="center"><img src="img/sgn.png" width=50% /></div>   
-> 
+>
 > 可以看到当输入的值大于0的时候，会输出1，这时候该神经元表现为**激活状态**，输出的1是对下一个神经元有贡献的，也就是说该神经元的输出是可以传递给下一个神经元； 
->  
+>
 > 当输入的值小于0的时候，会输出0，0对于下一个神经元没有贡献，这时候的神经元是**未激活**的。 
->  
+>
 > 这里的**贡献**是指，下一个神经元接收到的 $x_i=0$ ，那也就不会对下一个神经元产生任何影响；下一个神经元接收到的 $x_i\neq 0$时，那么会对下一个神经元产生影响   
-> 
-> 减去阈值 $\theta$ 再激活，也就是把判断是否**激活**的条件统一成 $x\geq0$ (便于计算)，如下
-> 
-> $$\begin{aligned}
-  sgn(x)=
-  \begin{cases}
-    1,& x \geq \theta \\
-    0,& x< \theta
-  \end{cases}
-  \quad \Rightarrow \quad
-  sgn(x-\theta)=
-  \begin{cases}
-    1,& x\geq 0 \\
-    0,& x<0
-  \end{cases}
-\end{aligned}$$
+>
+> 减去阈值 $\theta$ 再激活，也就是把判断是否**激活**的条件统一成 $ x\geq0 $ (便于计算)，如下
+>
+> $$
+> \begin{aligned}
+> sgn(x)=
+> \begin{cases}
+> 1,& x \geq \theta \\
+> 0,& x< \theta
+> \end{cases}
+> \quad \Rightarrow \quad
+> sgn(x-\theta)=
+> \begin{cases}
+> 1,& x\geq 0 \\
+> 0,& x<0
+> \end{cases}
+> \end{aligned}
+> $$
 
 
 ## 激活函数
@@ -114,13 +122,15 @@ $$\begin{aligned}
 
 ![sgn](img/sgn.png)
 
-$$\begin{aligned}
+$$
+\begin{aligned}
   sgn(x)=
   \begin{cases}
     1,& x\geq0 \\
     0,& x<0
   \end{cases}
-\end{aligned}$$
+\end{aligned}
+$$
 
 ```python
 def sgn(x):
@@ -133,9 +143,11 @@ def sgn(x):
 
 ![sigmoid](img/sigmoid.png)
 
-$$\begin{aligned}
+$$
+\begin{aligned}
     sigmoid(x)  &= \frac{1}{1+e^{-x}}
-\end{aligned}$$
+\end{aligned}
+$$
 
 Sigmoid 还有一个很有趣也很重要的特点，就是它的导数可以用自身表示，这在计算中是比较方便的
 $$\begin{aligned}
@@ -153,9 +165,12 @@ def sigmoid(x):
 :astonished:
 
 那我们举个例子，也是比较经典的例子：用感知器实现逻辑 `and` 的操作。(其余数字逻辑/布尔运算也类似)
-$$\begin{aligned}
+$$
+\begin{aligned}
     Y=X_1 X_2
-\end{aligned}$$
+\end{aligned}
+$$
+
 真值表如下：
 | $x_1$ | $x_2$ |  $y$  |
 | :---: | :---: | :---: |
@@ -175,22 +190,26 @@ $$\begin{aligned}
 ![and 逻辑的网络结构](img/perceptron-and.png)
 
 假定网络参数为 $w_1=0.5, w_2=0.5, b=-0.8$ ，激活函数选择理想的阶跃函数
-$$\begin{aligned}
+$$
+\begin{aligned}
   f(x)=sgn(x)=
   \begin{cases}
     1,& x\geq0 \\
     0,& x<0
   \end{cases}
-\end{aligned}$$
+\end{aligned}
+$$
 
 根据输出公式，我们计算当输入为 $x_1=0, x_2=1$ 的输出：
-$$\begin{aligned}
+$$
+\begin{aligned}
   y &=f(W \cdot X+b) \\
     &=f(\omega_1 x_1+\omega_2 x_2 +b) \\
     &=f(0.5 \times 0+0.5 \times 1 -0.8) \\
     &=f(-0.3) \\
     &=0
-\end{aligned}$$
+\end{aligned}
+$$
 
 | $\omega_1 x_1$ | $\omega_2 x_2$ |  $b$  | $\omega_1 x_1+\omega_2 x_2 +b$ | $f(\omega_1 x_1+\omega_2 x_2 +b)$ |
 | :------------: | :------------: | :---: | :----------------------------: | :-------------------------------: |
@@ -235,26 +254,31 @@ $$\begin{aligned}
 
 上面的神经网络中，有两个输出、四个输出和一个有20个结点的隐藏层
 
-$$\begin{aligned}
+$$
+\begin{aligned}
     隐藏层矩阵 \qquad & H_{(1,20)} = X_{(1,2)} W_{1 (2,20)}+ b_{1 (1,20)} \\
     输出层矩阵 \qquad & Y_{(1,4)} = H_{(1,20)} W_{2 (20,4)}+ b_{2 (1,4)} \\
-\end{aligned}$$
+\end{aligned}
+$$
 > 括号内写的是矩阵的维度
 
 上面的方程是线性方程，联立方程组如下
-$$\begin{aligned}
+$$
+\begin{aligned}
     Y_{(1,4)} &= H_{(1,20)} W_{2 (20,4)}+ b_{2 (1,4)} \\
               &= (X_{(1,2)} W_{1 (2,20)}+ b_{1 (1,20)}) W_{2 (20,4)}+ b_{2 (1,4)} \\
               &= X_{(1,2)}  W_{1 (2,20)} W_{2 (20,4)} + b_{1 (1,20)} W_{2 (20,4)} + b_{2 (1,4)} \\
               &= X_{(1,2)}  [W_{1 (2,20)} W_{2 (20,4)}] + [b_{1 (1,20)} W_{2 (20,4)} + b_{2 (1,4)}] \\
               &= X_{(1,2)}  W_{new} + b_{new} \\
-\end{aligned}$$
+\end{aligned}
+$$
 你瞧，通过线性方程的可加性，输出 $Y$ 与输入 $X$ 之间rr
 
 我们将上述计算过程用矩阵的形式表示一次（矩阵对于神经网络的表示是十分重要的，这在编写代码的时候是十分方便的）
 
 输入和输出都是列向量
-$$\begin{aligned}
+$$
+\begin{aligned}
   \vec{x} =
   \begin{bmatrix}
     x_1 \\
@@ -269,10 +293,12 @@ $$\begin{aligned}
     y_3 \\
     y_4
   \end{bmatrix}
-\end{aligned}$$
+\end{aligned}
+$$
 
 对于第一层隐藏层的每一个结点，都有一个权重的行向量
-$$\begin{aligned}
+$$
+\begin{aligned}
   \vec{w}_{1(1)} &= \begin{bmatrix}
                     w_{1_{11}},w_{1_{12}}
                   \end{bmatrix} \\
@@ -283,10 +309,12 @@ $$\begin{aligned}
   \vec{w}_{1(20)} &=\begin{bmatrix}
                     w_{1_{20,1}},w_{1_{20,2}}
                   \end{bmatrix} \\
-\end{aligned}$$
+\end{aligned}
+$$
 
 第一层隐藏层的权重矩阵，是由全部结点的行向量组成的
-$$\begin{aligned}
+$$
+\begin{aligned}
   \vec{W}_1 = \begin{bmatrix}
               \vec{w}_{1(1)} \\ \vec{w}_{1(2)} \\ ... \\ \vec{w}_{1(20)}
             \end{bmatrix}
@@ -296,15 +324,18 @@ $$\begin{aligned}
                ... \\
                w_{1_{20,1}} , w_{1_{20,2}} \\
             \end{bmatrix}
-\end{aligned}$$
+\end{aligned}
+$$
 
 第二层网络的矩阵 $\vec{W}_2$ 就不写出来了
 
 综上，有
-$$\begin{aligned}
+$$
+\begin{aligned}
   \vec{h} &= f(\vec{W}_1 \cdot \vec{x}+\vec{b}_1) \\
   \vec{y} &= \vec{W}_2 \cdot \vec{h}+\vec{b}_2 =\vec{W}_2 \cdot f(\vec{W}_1 \cdot \vec{x}+\vec{b}_1)+\vec{b}_2
-\end{aligned}$$
+\end{aligned}
+$$
 
 
 通过上述线性方程的计算，我们就能得到最终的输出 $\vec{y}$ 了，线性代数告诉我们：**一系列线性方程的运算最终都可以用一个线性方程表示**。也就是说，上述两个式子联立后可以用一个线性方程表达。   
@@ -351,14 +382,18 @@ $$\begin{aligned}
 <div align="center"><img src="img/前向传播-1.png" width=80% /></div>   
 
 第一层网络的传播过程可以总结为以下公式
-$$\begin{aligned}
+$$
+\begin{aligned}
     h_k=\sum_{i=0}^{n-1} \omega_{ik}^{[1]} x_i + b
-\end{aligned}$$
+\end{aligned}
+$$
 算上激活之后就是这一层网络的最终输出
 > 这里神经元应该只画一个就好，但是为了便于理解和后面反向传播的过程，我这里画两个圆⚪
-$$\begin{aligned}
+$$
+\begin{aligned}
     f(h_k)=f_{act}(\sum_{i=0}^{n-1} \omega_{ik}^{[1]} x_i + b_0^{[1]})
-\end{aligned}$$
+\end{aligned}
+$$
 
 其中，有 $n$ 个输入 $x_i, i=0,...,n-1$
 > 这里是为了迎合计算机编程数组下标从 $0$ 开始的习惯
@@ -370,39 +405,49 @@ $$\begin{aligned}
 $f_{act}(x)$ 是激活函数 (activation) 
 
 那么对于隐藏层的第一个结点 $f(h_0)$
-$$\begin{aligned}
+$$
+\begin{aligned}
     h_0 & =\sum_{i=0}^{1} \omega_{i0}^{[1]} x_i + b_0^{[1]}\\
         & =\omega_{00}^{[1]} x_i + \omega_{10}^{[1]} x_i + b_0^{[1]}
-\end{aligned}$$
+\end{aligned}
+$$
 激活
-$$\begin{aligned}
+$$
+\begin{aligned}
     f(h_0) & = f_{act}(\sum_{i=0}^{1} \omega_{i0}^{[1]} x_i + b_0^{[1]})  \\
         & = f_{act}(\omega_{00}^{[1]} x_i + \omega_{10}^{[1]} x_i + b_0^{[1]})
-\end{aligned}$$
+\end{aligned}
+$$
 
 > 这里的激活函数选择哪一个函数对对最后得出的结论没有影响，并且会使得推理过程比较混乱，暂不实例化该函数  
 > 如果选择 `Sigmoid` 函数作为激活函数，那么输出如下：
-> $$\begin{aligned}
-    f(h_0) & = f_{act}(\sum_{i=0}^{1} \omega_{i0}^{[1]} x_i + b_0^{[1]})  \\
-        & = f_{act}(\omega_{00}^{[1]} x_i + \omega_{10}^{[1]} x_i + b_0^{[1]})  \\
-        & = \frac{1}{1+e^{-(\omega_{00}^{[1]} x_i + \omega_{10}^{[1]} x_i + b_0^{[1]})}}
-\end{aligned}$$
+> $$
+> \begin{aligned}
+>     f(h_0) & = f_{act}(\sum_{i=0}^{1} \omega_{i0}^{[1]} x_i + b_0^{[1]})  \\
+>         & = f_{act}(\omega_{00}^{[1]} x_i + \omega_{10}^{[1]} x_i + b_0^{[1]})  \\
+>         & = \frac{1}{1+e^{-(\omega_{00}^{[1]} x_i + \omega_{10}^{[1]} x_i + b_0^{[1]})}}
+> \end{aligned}
+> $$
 
 ----------------------------------------------------------------------------
 
 <div align="center"><img src="img/前向传播-2.png" width=80% /></div> 
 
 第二层网络，也就是输出层网络的传播过程可以总结为以下公式
-$$\begin{aligned}
+$$
+\begin{aligned}
     \hat{y}_j=\sum_{k=0}^{m-1} \omega_{kj}^{[2]} h_k + b_0^{[2]} \qquad k=0,...,t
-\end{aligned}$$
+\end{aligned}
+$$
 
 其中，有 $t$ 个隐藏层输入 $h_k$，这里输出值 $\hat{y}_j$ 也是预测值
 
 对于输出层的第0个输出结点，有
-$$\begin{aligned}
+$$
+\begin{aligned}
     \hat{y}_0=\sum_{k=0}^{m-1} \omega_{k0}^{[2]} h_k + b_0^{[2]}
-\end{aligned}$$
+\end{aligned}
+$$
 
 **至此，推理过程全部结束** :sunglasses:
 
@@ -432,31 +477,39 @@ $$\begin{aligned}
 
 得到了输出的预测值 $\hat{y_0}$ ，和我们真实值之间的误差为 $|\hat{y_0}-y_0|$
 为了消除绝对值的影响、便于计算，我们用我们小学二年级就学过的 **MSE（均方方差）**，这也是常用的误差函数
-$$\begin{aligned}
+$$
+\begin{aligned}
     MSE=\frac{1}{n}\sum_{i=0}^{n-1}(y_i-\hat{y}_i)^2
-\end{aligned}$$
+\end{aligned}
+$$
 
 > 当然，根据不同的需求选择不同的损失函数，损失函数可以大致分为两类：分类损失（Classification Loss）和回归损失（Regression Loss）。
 
 不过在这里我们还是用 $\delta_j=Loss(\hat{y}_j,y_j)$ 来表示损失函数，也是便于计算而已。
 
 得到了 $\delta_j$ 之后，我们就可以计算总误差
-$$\begin{aligned}
+$$
+\begin{aligned}
     loss=\sum_{j=0}^{m-1}\delta_j=\sum_{j=0}^{m-1}Loss(\hat{y}_j,y_j)
-\end{aligned}$$
+\end{aligned}
+$$
 
 得到了以上的通用公式之后，我们就可以计算出最后**总**损失函数了
-$$\begin{aligned}
+$$
+\begin{aligned}
     loss  & =\sum_{j=0}^{m-1}\delta_j=\sum_{j=0}^{1}Loss(\hat{y}_j,y_j) \\
           & =Loss(\hat{y}_0,y_0)+Loss(\hat{y}_1,y_1)
-\end{aligned}$$
+\end{aligned}
+$$
 
 在上面的全部计算中，我们只计算了一条线，是经过 $x_0$、$h_0$、$f(h_0)$、$\hat{y}_0$、$\delta_0$、$loss$，但是该网络还有其他的参数$\omega_{ik}^{[l]}$、$b_k^{[l]}$，为每一层的权重和偏置。  
 
 $loss$ 是仅与权重`weight`和偏置`bias`有关，而与各个神经元的输出无关的函数，实际上是这样的，所以在之后对 $loss$ 求导的时候都是求偏导
-$$\begin{aligned}
+$$
+\begin{aligned}
     loss = loss(\omega_{00}^{[1]},\omega_{01}^{[1]},...,\omega_{ik}^{[l]};b_0^{[1]},b_1^{[1]},...b_k^{[l]})
-\end{aligned}$$
+\end{aligned}
+$$
 
 **损失函数有了，那我们现在开始正式的反向传播** :smiley:
 
@@ -475,22 +528,27 @@ $$\begin{aligned}
 从起始点 $x_0$ 开始，我们每次逼近都是需要移动一定的步长 $lr$ 。这时候我们就确定了每次逼近修改的数值。
 
 上面的分析就可以得到深度学习中最重要的公式：**梯度下降**公式
-$$\begin{aligned}
+$$
+\begin{aligned}
     param_{new}=param-lr \times \frac{\partial loss}{\partial param}
-\end{aligned}$$
+\end{aligned}
+$$
 
 > $lr$ 在神经网络中称为**学习率**，也就是每次逼近的步长   
 > $param$ 是需要修正的参数
 
 那我们开始以修正 $\omega_{00}^{[2]}$ 为例开始我们的公式推导，利用我们小学二年级就学过的**链式求导法则**
-$$\begin{aligned}
+$$
+\begin{aligned}
     \frac{\partial loss}{\partial \omega_{00}^{[2]}}=
     \frac{\partial loss}{\partial \delta_0} \times 
     \frac{\partial \delta_0}{\partial \hat{y}_0} \times 
     \frac{\partial \hat{y}_0}{\partial \omega_{00}^{[2]}}
-\end{aligned}$$
+\end{aligned}
+$$
 
-$$\begin{aligned}
+$$
+\begin{aligned}
     loss=\sum_{j=0}^{m-1}\delta_j=\delta_0+\delta_1 
     \qquad & \therefore
     \frac{\partial loss}{\partial \delta_0}=1 
@@ -502,27 +560,34 @@ $$\begin{aligned}
     \hat{y}_0=\sum_{k=0}^{m-1} \omega_{k0}^{[2]} h_k + b_0^{[2]}
     \qquad & \therefore
     \frac{\partial \hat{y}_0}{\partial \omega_{00}^{[2]}}=h_0
-\end{aligned}$$
+\end{aligned}
+$$
 
 综上
-$$\begin{aligned}
+$$
+\begin{aligned}
     \frac{\partial loss}{\partial \omega_{00}^{[2]}}=
     1 \times \frac{\partial Loss(\hat{y}_0,y_0)}{\partial \hat{y}_0}\times h_0
-\end{aligned}$$
+\end{aligned}
+$$
 
 如果选损失函数为`均方误差`
-$$\begin{aligned}
+$$
+\begin{aligned}
   MSE =\frac{1}{2}\sum_{i=0}^{1}(y_i-\hat{y}_i)^2
       = (y_0-\hat{y}_0)^2+(y_1-\hat{y}_1)^2
-\end{aligned}$$
+\end{aligned}
+$$
 那么可以进一步
-$$\begin{aligned}
+$$
+\begin{aligned}
     \frac{\partial loss}{\partial \omega_{00}^{[2]}}
     & = 1 \times \frac{\partial Loss(\hat{y}_0,y_0)}{\partial \hat{y}_0}\times h_0
     = 1 \times \frac{\partial MSE(\hat{y}_0,y_0)}{\partial \hat{y}_0}\times h_0 \\
     & = 1 \times (-2 \hat{y}_0) \times h_0 
     =-2 \hat{y}_0 h_0
-\end{aligned}$$
+\end{aligned}
+$$
 
 > 所以其实损失函数选择哪一个对公式的推导是没有影响的，为了简化推导流程，我们在上面都不会计算具体的损失函数，激活函数也是如此的，因此推导过程都没有实例化激活函数和损失函数  
 > 
@@ -534,11 +599,13 @@ $$\begin{aligned}
 > 也可以看出，为了方便寻找损失函数的最小值，一般选择的损失函数只存在一个极小值点。这也是好的损失函数必须具备的。在自定义损失函数的时候就必须考虑到这一点。
 
 那么修正后的新的参数
-$$\begin{aligned}
+$$
+\begin{aligned}
     {\omega_{00}^{[2]}}_{new}
     & =\omega_{00}^{[2]}-lr \times \frac{\partial loss}{\partial \omega_{00}^{[2]}} \\
     & =\omega_{00}^{[2]}-lr \times (-2 \hat{y}_0 h_0)
-\end{aligned}$$
+\end{aligned}
+$$
 下一次推理就用这个参数进行推理，得到的损失函数（理论上）就会更小
 
 > 请自行推导 $\frac{\partial loss}{\partial \omega_{00}^{[1]}}$
@@ -553,10 +620,12 @@ $$\begin{aligned}
 **梯度求导**
 
 沿着损失函数梯度下降的方向，寻找损失函数的极小值（最小值），得到局部最优解（全局最优解）的方法。
-$$\begin{aligned}
+$$
+\begin{aligned}
     param_{new}=param-lr \times \frac{\partial loss}{\partial param}
-\end{aligned}$$
- 
+\end{aligned}
+$$
+
 **学习率** (learning rate, lr): 学习率是梯度下降的速度，是一个超参数。学习率设置过小，收敛过程会十分缓慢。学习率过大时，梯度会在最小值附近来回振荡，甚至无法收敛。
 
 

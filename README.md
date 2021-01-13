@@ -13,7 +13,7 @@
   - [x] [Nvidia 驱动 / CUDA 安装 ](linux/docs/install/nvidia/nvidia.md)
   - [x] [OpenCV 源码编译](linux/docs/install/opencv/opencv.md)
 
-- [ ] [机器学习（深度学习）](DeepLearning/DeepLearning-README.md)
+- [ ] [深度学习](DeepLearning/DeepLearning-README.md)
   - [x] [深度学习基础](DeepLearning/basic_deepLearning/basic_deepLearning.md)（神经元，BP神经网络）
   - [ ] [卷积神经网络 CNN](DeepLearning/cnn/cnn.md)
 

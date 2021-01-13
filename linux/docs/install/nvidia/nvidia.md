@@ -97,13 +97,17 @@ sudo ./cuda_11.0.2_450.51.05_linux.run
 
 
 输入 `accept` 确认安装
+
 ![cuda install 4](img/cuda-install-4.png)
 
 这里不要勾选 `Drive` ，因为这里安装的驱动可能低于系统自带的驱动，根据 [驱动安装](#nvidia-驱动安装)
+
 ![cuda install 5](img/cuda-install-5.png)
 
 安装结束后，出现安装概要
+
 ![cuda install 6](img/cuda-install-6.png)
+
 ```bash
 ===========
 = Summary =
@@ -174,8 +178,6 @@ sudo rm -rf /usr/local/cuda-11.0
 - 亲测 **tensorflow 2.1** 需要 **CUDA 11.0** 和 **cuDNN 8**
 
 ![cuDNN-download](img/cuDNN-download.png)
-
-![cuDNN-download](img/cuDNN-download-765.png)
 
 
 下载解压之后
