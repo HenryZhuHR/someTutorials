@@ -71,53 +71,21 @@ SOTA，全称「state-of-the-art」，用于描述机器学习中取得某个任
 - [Conditional Random Fields as Recurrent Neural Networks](http://www.robots.ox.ac.uk/~szheng/papers/CRFasRNN.pdf)
 - [Semantic Segmentation using Adversarial Networks](https://arxiv.org/pdf/1611.08408.pdf)
 - [SEC: Seed, Expand and Constrain：](http://pub.ist.ac.at/~akolesnikov/files/ECCV2016/main.pdf)
-
-
-Efficient piecewise training of deep structured models for semantic segmentation
-https://arxiv.org/pdf/1504.01013.pdf
-
-Semantic Image Segmentation via Deep Parsing Network
-https://arxiv.org/pdf/1509.02634.pdf
-
-BoxSup: Exploiting Bounding Boxes to Supervise Convolutional Networks for Semantic Segmentation
-https://arxiv.org/pdf/1503.01640.pdf
-
-Learning Deconvolution Network for Semantic Segmentation
-https://arxiv.org/pdf/1505.04366.pdf
-
-Decoupled Deep Neural Network for Semi-supervised Semantic Segmentation
-https://arxiv.org/pdf/1506.04924.pdf
-
-PUSHING THE BOUNDARIES OF BOUNDARY DETECTION USING DEEP LEARNING
-https://arxiv.org/pdf/1511.07386.pdf
-
-Learning Transferrable Knowledge for Semantic Segmentation with Deep Convolutional Neural Network
-https://arxiv.org/pdf/1512.07928.pdf
-
-Feedforward Semantic Segmentation With Zoom-Out Features
-http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Mostajabi_Feedforward_Semantic_Segmentation_2015_CVPR_paper.pdf
-
-Joint Calibration for Semantic Segmentation
-https://arxiv.org/pdf/1507.01581.pdf
-
-Hypercolumns for Object Segmentation and Fine-Grained Localization
-http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Hariharan_Hypercolumns_for_Object_2015_CVPR_paper.pdf
-
-Scene Parsing with Multiscale Feature Learning
-http://yann.lecun.com/exdb/publis/pdf/farabet-icml-12.pdf
-
-Learning Hierarchical Features for Scene Labeling
-http://yann.lecun.com/exdb/publis/pdf/farabet-pami-13.pdf
-
-Segment-Phrase Table for Semantic Segmentation, Visual Entailment and Paraphrasing
-http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Izadinia_Segment-Phrase_Table_for_ICCV_2015_paper.pdf
-
-MULTI-SCALE CONTEXT AGGREGATION BY DILATED CONVOLUTIONS
-https://arxiv.org/pdf/1511.07122v2.pdf
-
-Weakly supervised graph based semantic segmentation by learning communities of image-parts
-http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Pourian_Weakly_Supervised_Graph_ICCV_2015_paper.pdf
-
+- [Efficient piecewise training of deep structured models for semantic segmentation](https://arxiv.org/pdf/1504.01013.pdf)
+- [Semantic Image Segmentation via Deep Parsing Network](https://arxiv.org/pdf/1509.02634.pdf)
+- [BoxSup: Exploiting Bounding Boxes to Supervise Convolutional Networks for Semantic Segmentation](https://arxiv.org/pdf/1503.01640.pdf)
+- [Learning Deconvolution Network for Semantic Segmentation](https://arxiv.org/pdf/1505.04366.pdf)
+- [Decoupled Deep Neural Network for Semi-supervised Semantic Segmentation](https://arxiv.org/pdf/1506.04924.pdf)
+- [PUSHING THE BOUNDARIES OF BOUNDARY DETECTION USING DEEP LEARNING](https://arxiv.org/pdf/1511.07386.pdf)
+- [Learning Transferrable Knowledge for Semantic Segmentation with Deep Convolutional Neural Network](https://arxiv.org/pdf/1512.07928.pdf)
+- [Feedforward Semantic Segmentation With Zoom-Out Features](http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Mostajabi_Feedforward_Semantic_Segmentation_2015_CVPR_paper.pdf)
+- [Joint Calibration for Semantic Segmentation](https://arxiv.org/pdf/1507.01581.pdf)
+- [Hypercolumns for Object Segmentation and Fine-Grained Localization](http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Hariharan_Hypercolumns_for_Object_2015_CVPR_paper.pdf)
+- [Scene Parsing with Multiscale Feature Learning](http://yann.lecun.com/exdb/publis/pdf/farabet-icml-12.pdf)
+- [Learning Hierarchical Features for Scene Labeling](http://yann.lecun.com/exdb/publis/pdf/farabet-pami-13.pdf)
+- [Segment-Phrase Table for Semantic Segmentation, Visual Entailment and Paraphrasing](http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Izadinia_Segment-Phrase_Table_for_ICCV_2015_paper.pdf)
+- [MULTI-SCALE CONTEXT AGGREGATION BY DILATED CONVOLUTIONS](https://arxiv.org/pdf/1511.07122v2.pdf)
+- [Weakly supervised graph based semantic segmentation by learning communities of image-parts](http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Pourian_Weakly_Supervised_Graph_ICCV_2015_paper.pdf)
 
 目标追踪
 
