@@ -53,4 +53,5 @@ git clone https://gitee.com/HenryZhuHR/someTutorials.git
 <!-- Others -->
 <!-- 
 Upload linux/desktop-MacOS/MacOS-BigSur.tar.gz to Release
+and new the file: linux/desktop-MacOS/desktop-MacOS.md
  -->

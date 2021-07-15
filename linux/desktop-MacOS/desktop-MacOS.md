@@ -45,6 +45,7 @@ sudo apt install -y gnome-shell-extensions
 - [macOS Big Sur:Cursors](https://www.opendesktop.org/p/1408466/)
 - [MacOS-3D-Originals-Shell](https://www.opendesktop.org/p/1410510/)
 - [Cupertino iCons CollectionOriginal](https://www.opendesktop.org/s/Gnome/p/1102582/)
+> BigSur主题已经打包到[Release](https://github.com/HenryZhuHR/someTutorials/releases/download/0.0/MacOS-BigSur.tar.gz)中，可以直接下载使用
 
 ### Catalina
 - [McHigh Sierra](https://www.opendesktop.org/s/Gnome/p/1013714/)
