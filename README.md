@@ -1,6 +1,7 @@
 # Contents
 - [ ] [Python](python/README.md) 
-  - [ ] Python 3rd-party library
+  - Python 3rd-party library
+    - [x] [tqdm](python/lib/tqdm/tqdm.md)
 - [x] [How to submit your code to GitHub](git/git.md) | [如何将代码提交至Github](git/git_cn.md)
 
 - [ ] [C ](c/c.md)

@@ -1,39 +1,47 @@
 # Ubuntu Mac 化
 - [Ubuntu Mac 化](#ubuntu-mac-化)
-- [安装 TweakTool](#安装-tweaktool)
+- [TweakTool](#tweaktool)
+  - [安装 TweakTool](#安装-tweaktool)
+  - [修改窗口的按钮位置](#修改窗口的按钮位置)
+  - [修改Shell](#修改shell)
 - [安装主题](#安装主题)
   - [MacOS 主题](#macos-主题)
     - [Big Sur](#big-sur)
     - [Catalina](#catalina)
-  - [安装](#安装)
+  - [修改主题样式](#修改主题样式)
 - [Dash to Dock](#dash-to-dock)
 - [最终效果](#最终效果)
 
 
-# 安装 TweakTool
+# TweakTool
+## 安装 TweakTool
 要安装主题，首先要先安装相应的工具 `TweakTool`
 ```bash
 sudo apt update
 sudo apt install -y gnome-tweak-tool
 ```
-![修改窗口的按钮位置](img/修改窗口的按钮位置-1.png)
+![修改窗口的按钮位置](img/change-winButton-1.png)
 
-- 修改窗口的按钮位置
+## 修改窗口的按钮位置
+
+`Window Titlebars` -> `Titlebar Buttons` -> `Placement` -> `Left`
 
 
-![修改窗口的按钮位置](img/修改窗口的按钮位置-2.png)
+![修改窗口的按钮位置](img/change-winButton-2.png)
+## 修改Shell 
 
-感叹号无法操作
+`Appearance` -> `Themes` -> `Shell` 有感叹号无法操作
+
 ![Tweak](img/Tweak-3.png)
 ```bash
 sudo apt install -y gnome-shell-extensions
 ```
 
-在`扩展`中打开`User themes`的选项之后，就可以看到感叹号消失了，这时候就可以修改终端的命令了
+在`扩展`中打开`User themes`的选项之后，就可以看到感叹号消失了，这时候就可以修改`Shell`了
 ![extension user_themes](img/tweak-extension-user_themes.png)
 ![appearance shell](img/tweak-appearance-shell.png)
 
-> 如果扩展中没有`User themes`选项，则可能需要重启设备
+> 如果扩展中没有`User themes`选项，则可能需要`reboot`重启设备
 
 
 
@@ -51,7 +59,7 @@ sudo apt install -y gnome-shell-extensions
 - [McHigh Sierra](https://www.opendesktop.org/s/Gnome/p/1013714/)
 - [McOS-themes](https://www.opendesktop.org/s/Gnome/p/1241688)
 
-## 安装
+## 修改主题样式
 上述下载的文件夹复制到对应的系统文件夹
 - 主题(themes): `/usr/share/themes`
 - 图标(icons): `/usr/share/icons`
@@ -67,7 +75,7 @@ sudo apt install -y gnome-shell-extensions
 sudo apt install -y chrome-gnome-shell
 ```
 
-下载 [dash to dock](https://extensions.gnome.org/extension/307/dash-to-dock/)
+下载 [dash to dock](https://extensions.gnome.org/extension/307/dash-to-dock/)，并且打开右上角的按钮
 
 ![下载 dash to dock](img/dash-to-dock-install.png)
 
