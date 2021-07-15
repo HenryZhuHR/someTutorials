@@ -1,5 +1,6 @@
 # Contents
-
+- [ ] [Python](python/README.md) 
+  - [ ] Python 3rd-party library
 - [x] [How to submit your code to GitHub](git/git.md) | [如何将代码提交至Github](git/git_cn.md)
 
 - [ ] [C ](c/c.md)
@@ -9,9 +10,10 @@
 - [ ] [CMake](cmake/cmake.md)
 
 - [ ] [Linux](linux/linux-README.md)
-  - [x] [Ubuntu 桌面 MacOS 化](linux/docs/install/desktop-MacOS/desktop-MacOS.md)
-  - [x] [Nvidia 驱动 / CUDA 安装 ](linux/docs/install/nvidia/nvidia.md)
-  - [x] [OpenCV 源码编译](linux/docs/install/opencv/opencv.md)
+  - [x] [Ubuntu 桌面 MacOS 化](linux/desktop-MacOS/desktop-MacOS.md)
+  - [x] [Nvidia 驱动 / CUDA 安装 ](linux/nvidia/nvidia.md)
+  - [x] [OpenCV 源码编译](linux/opencv/opencv.md)
+  - [x] [WSL2 (Windows Subsystem for Linux)](linux/wsl2/wsl2.md)
 
 - [ ] [深度学习](DeepLearning/DeepLearning-README.md)
   - [x] [深度学习基础](DeepLearning/basic_deepLearning/basic_deepLearning.md)（神经元，BP神经网络）
@@ -40,6 +42,15 @@
 
 如果部分公式仍然无法渲染，建议拉取到本地
 ```bash
+# Github
 git clone https://github.com/HenryZhuHR/someTutorials.git
+# Gitee
+git clone https://gitee.com/HenryZhuHR/someTutorials.git
 ```
 使用 Vscode 插件 [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) 、 [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles) 或 [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced) 插件进行查看
+
+
+<!-- Others -->
+<!-- 
+Upload linux/desktop-MacOS/MacOS-BigSur.tar.gz to Release
+ -->
