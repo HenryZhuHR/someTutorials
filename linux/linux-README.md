@@ -15,20 +15,20 @@
 
 
 # Linux 基础
-[Linux 基础](docs/basic/basic.md)
+[Linux 基础](basic/basic.md)
 
 ## 环境变量
-[环境变量](docs/basic/basic.md#环境变量)
+[环境变量](basic/basic.md#环境变量)
 ## 软链接
-[软链接](docs/basic/basic.md#软链接)
+[软链接](basic/basic.md#软链接)
 ## 安装常用的软件
-[安装常用的软件](docs/basic/basic.md#安装常用的软件)
+[安装常用的软件](basic/basic.md#安装常用的软件)
 
 # 系统安装
 ## 双系统方案
 ## WSL (Windows Subsystem for Linux)
 WSL 是在 Windows 10 上安装适用于 Linux 的 Windows 子系统。可以基本取代虚拟机的方案。
-- [如何安装 WSL](docs/install/wsl2/wsl2.md)
+- [如何安装 WSL](wsl2/wsl2.md)
 - [更新软件源](#ubuntu-更换软件源)
 
 
@@ -66,22 +66,22 @@ sudo apt update
 ```
 更新软件
 ```bash
-sudo apt upgrade -y
+sudo apt -y upgrade
 ```
 
 ## Ubuntu 界面 MacOS 化
-[Ubuntu 界面 MacOS 化](docs/install/desktop-MacOS/desktop-MacOS.md)
+[Ubuntu 界面 MacOS 化](desktop-MacOS/desktop-MacOS.md)
 
-![最终效果](docs/install/desktop-MacOS/img/finalDesktop-aft.png)
+![最终效果](desktop-MacOS/img/finalDesktop-aft.png)
 
 
 ## Linux 下 Nvidia 安装
-[Linux 下 Nvidia 安装](docs/install/nvidia/nvidia.md)
+[Linux 下 Nvidia 安装](nvidia/nvidia.md)
 
-![Nvidia 驱动](docs/install/nvidia/img/nvidia-settings-gpu-aft.png)
+![Nvidia 驱动](nvidia/img/nvidia-settings-gpu-aft.png)
 
 ## Linux 下 OpenCV 源码编译
-[Linux 下 OpenCV 源码编译](docs/install/opencv/opencv.md)
+[Linux 下 OpenCV 源码编译](opencv/opencv.md)
 
 如果需要 OpenCV 和 CUDA 联合编译，那需要先安装 CUDA ，参考 [Linux 下 Nvidia 安装](#linux-下-nvidia-安装)
 

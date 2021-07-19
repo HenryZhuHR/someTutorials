@@ -1,6 +1,7 @@
 # 文档导航
 - [文档导航](#文档导航)
 - [安装 WSL2 和 Ubuntu 子系统](#安装-wsl2-和-ubuntu-子系统)
+  - [步骤 1 - 启用适用于 Linux 的 Windows 子系统](#步骤-1---启用适用于-linux-的-windows-子系统)
 - [Linux安装图形界面](#linux安装图形界面)
   - [安装 Gnome 桌面](#安装-gnome-桌面)
   - [安装 Xrdp](#安装-xrdp)
@@ -12,12 +13,30 @@
 # 安装 WSL2 和 Ubuntu 子系统
 详细可以查看官方的[适用于 Linux 的 Windows 子系统文档](https://docs.microsoft.com/zh-cn/windows/wsl/)
 
+## 步骤 1 - 启用适用于 Linux 的 Windows 子系统
+- 用于 Linux 的 Windows 子系统    
 
-Windows下需要打开 `控制面板-程序-启用或关闭 Windows 功能` 中的 `适用于 Linux 的 Windows 子系统`、`虚拟机平台`
+以管理员身份打开 PowerShell 并运行：
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+- 启用虚拟机功能    
 
-![启用或关闭 Windows 功能](img/启用或关闭%20Windows%20功能.png)
+以管理员身份打开 PowerShell 并运行：
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
 
-下载 [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+> 不熟悉powershell的也可以在Windows下需要打开 `控制面板-程序-启用或关闭 Windows 功能` 中的 `适用于 Linux 的 Windows 子系统`、`虚拟机平台`
+> ![启用或关闭 Windows 功能](img/启用或关闭%20Windows%20功能.png)
+
+**重启计算机**
+
+下载 [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)（新版本中好像不是必须的操作了）
+
+到 `Microsoft Store` 中下载需要的Linux发行版本，这里选择[Ubuntu](https://www.microsoft.com/store/productId/9NBLGGH4MSV6)
+
+![Microsoft Store](img/msstore-ubuntu.png)
 
 打开 PowerShell，然后在安装新的 Linux 发行版时运行以下命令，将 WSL 2 设置为默认版本
 ```bash
@@ -31,14 +50,12 @@ wsl --list --verbose
 
 启动 Ubuntu 之后进行短暂的安装
 
-设置 roo 用户
-```bash
-sudo passwd root
-```
+> 推荐[Windows Terminal](https://www.microsoft.com/store/productId/9N0DX20HK701)，Windows Terminal 可以用于启动Ubuntu
+> ![Windows Terminal](img/windows-terminal.png)
 
 # Linux安装图形界面
 ## 安装 Gnome 桌面
-WSL 不支持 systemd 而 Gnome 桌面又是基于 systemd，所以先解决这个问题。（参考：https://github.com/HenryZhuHR/ubuntu-wsl2-systemd-script）
+WSL 不支持 systemd 而 Gnome 桌面又是基于 systemd，所以先解决这个问题。（参考：ubuntu-wsl2-systemd-script 的解决方案）
 ```bash
 sudo apt update
 sudo apt install git

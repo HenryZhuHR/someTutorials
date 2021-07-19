@@ -4,11 +4,11 @@
     - [x] [tqdm](python/lib/tqdm/tqdm.md)
 - [x] [How to submit your code to GitHub](git/git.md) | [如何将代码提交至Github](git/git_cn.md)
 
-- [ ] [C ](c/c.md)
+<!-- - [ ] [C ](c/c.md) -->
 
-- [ ] [C++](cxx/cxx.md)
+<!-- - [ ] [C++](cxx/cxx.md) -->
 
-- [ ] [CMake](cmake/cmake.md)
+<!-- - [ ] [CMake](cmake/cmake.md) -->
 
 - [ ] [Linux](linux/linux-README.md)
   - [x] [Ubuntu 桌面 MacOS 化](linux/desktop-MacOS/desktop-MacOS.md)
@@ -16,18 +16,16 @@
   - [x] [OpenCV 源码编译](linux/opencv/opencv.md)
   - [x] [WSL2 (Windows Subsystem for Linux)](linux/wsl2/wsl2.md)
 
-- [ ] [深度学习](DeepLearning/DeepLearning-README.md)
+<!-- - [ ] [深度学习](DeepLearning/DeepLearning-README.md)
   - [x] [深度学习基础](DeepLearning/basic_deepLearning/basic_deepLearning.md)（神经元，BP神经网络）
-  - [ ] [卷积神经网络 CNN](DeepLearning/cnn/cnn.md)
+  - [ ] [卷积神经网络 CNN](DeepLearning/cnn/cnn.md) -->
 
-- [ ] [STM32](stm32/stm32.md)
-- [ ] [Raspberry](raspberry/raspberry-README.md)
 
 <!-- - [ ] [Leetcode 刷题](leetcode/README.md) -->
 
-- [ ] [设计模式](DesignPattern/README.md)
+<!-- - [ ] [设计模式](DesignPattern/README.md) -->
 
-- [ ] [Qt](qt/qt.md)
+
 
 
 

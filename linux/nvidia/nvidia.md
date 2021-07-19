@@ -1,8 +1,16 @@
 # 目录
+> 最后更新于 2021.7.19
 - [目录](#目录)
 - [Nvidia 驱动安装](#nvidia-驱动安装)
 - [CUDA 安装](#cuda-安装)
-- [参考](#参考)
+  - [deb(local)安装方式](#deblocal安装方式)
+  - [deb(network)安装方式](#debnetwork安装方式)
+  - [runfile(local)安装方式](#runfilelocal安装方式)
+  - [配置 CUDA 环境变量](#配置-cuda-环境变量)
+  - [卸载 CUDA](#卸载-cuda)
+- [cuDNN安装](#cudnn安装)
+
+
 
 
 # Nvidia 驱动安装
@@ -16,7 +24,7 @@ nvidia-settings
 ![nvidia-settings](img/nvidia-settings-gpu.png)
 
 以及英伟达系统管理接口（NVIDIA System Management Interface, 简称 nvidia-smi）。这是是基于NVIDIA Management Library (NVML) 的命令行管理组件,旨在(intened to )帮助管理和监控NVIDIA GPU设备。  
-在训练的时候可以看到信息
+可以查看GPU使用情况，`-l`可以实时刷新
 ```bash
 $ nvidia-smi 
 Tue Jan  5 20:42:59 2021       
@@ -57,32 +65,51 @@ sudo ubuntu-drivers autoinstall
 ```
 
 # CUDA 安装
-
-<!-- 对 gcc 和 g++ 降级(不必须的，如果可以安装CUDA的话，可以不降级)
-```bash
-sudo apt install -y gcc-8
-sudo mv /usr/bin/gcc /usr/bin/gcc.bak
-sudo rm /usr/bin/gcc
-sudo ln -s /usr/bin/gcc-8 /usr/bin/gcc
-ls -l /usr/bin/gcc*
-
-sudo apt install -y g++-8
-sudo mv /usr/bin/g++ /usr/bin/g++.bak
-sudo rm /usr/bin/g++
-sudo ln -s /usr/bin/g++-8 /usr/bin/g++
-ls -l /usr/bin/g++*
-``` -->
-
 到[NVIDIA官网](https://developer.nvidia.com/)下载[CUDA toolkit](https://developer.nvidia.com/cuda-toolkit-archive)，如果有需要可以参考阅读[cuda toolkit release notes](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html)
 
-> Ubuntu下有三种安装方式`deb(local)`、`deb(network)`、`runfile(local)`，下面使用`runfile(local)`方式安装，但是如果需要安装TensorRT，貌似必须使用第一种方式
+Ubuntu下有三种安装方式
+- [x] [deb(local)安装方式](#deblocal安装方式)
+- [x] [deb(network)安装方式](#debnetwork安装方式)
+- [x] [runfile(local)安装方式](#runfilelocal安装方式)
+> 如果需要安装TensorRT，貌似必须使用[`deb(local)`](#deblocal安装方式)方式安装，这种安装方式非常简单，只需要按照命令即可，并且**强烈推荐这种安装方式**
 
-下载
+
+## deb(local)安装方式
+选择好需要安装的[CUDA toolkit](https://developer.nvidia.com/cuda-toolkit-archive)版本，再选择好对应系统、架构、发行版本及其版本、安装方式，安装对应命令即可
+
+![cuda-install-deb](img/cuda-install-deb.png)
+
+例如，`x86_64`架构下的`Ubuntu 20.04`通过`deb(local)`的方式安装`CUDA 11.4`的命令如下
 ```bash
-wget https://developer.download.nvidia.com/compute/cuda/<cuda_version>/local_installers/cuda_<cuda_version>_<driver_version>_linux.run
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda-repo-ubuntu2004-11-4-local_11.4.0-470.42.01-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2004-11-4-local_11.4.0-470.42.01-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-4-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get -y install cuda
 ```
-- `<cuda_version>` 是CUDA版本号
-- `<driver_version>` 是显卡驱动版本
+## deb(network)安装方式
+选择好需要安装的[CUDA toolkit](https://developer.nvidia.com/cuda-toolkit-archive)版本，再选择好对应系统、架构、发行版本及其版本、安装方式，安装对应命令即可
+
+例如，`x86_64`架构下的`Ubuntu 20.04`通过`deb(network)`的方式安装`CUDA 11.4`的命令如下
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+
+## runfile(local)安装方式
+选择好需要安装的[CUDA toolkit](https://developer.nvidia.com/cuda-toolkit-archive)版本，再选择好对应系统、架构、发行版本及其版本、安装方式，安装对应命令即可
+例如，`x86_64`架构下的`Ubuntu 20.04`通过`runfile(network)`的方式安装`CUDA 11.4`的命令如下
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run
+sudo sh cuda_11.4.0_470.42.01_linux.run
+```
+> 下面的配图是安装CUDA 11.0的版本
 修改执行权限
 ```bash
 sudo chmod 777 cuda_<cuda_version>_<driver_version>_linux.run
@@ -135,6 +162,8 @@ To install the driver using this installer, run the following command, replacing
 Logfile is /var/log/cuda-installer.log
 ```
 > 这里的安装版本是CUDA 11.0，请根据自己的CUDA版本进行处理
+
+
 ## 配置 CUDA 环境变量
 CUDA环境要求我们
 ```bash
@@ -177,11 +206,6 @@ sudo rm -rf /usr/local/cuda-11.0
 
 # cuDNN安装
 下载 [cuDNN](https://developer.nvidia.com/zh-cn/cudnn)（需要注册NVIDIA账号并登录）
-
-选择好自己需要的版本
-- tensorflow 有版本要求，可以查看 Tensorflow 的 [GPU 支持](https://tensorflow.google.cn/install/gpu?hl=zh-cn#linux_setup) 和 [GPU 版本对应](https://tensorflow.google.cn/install/source?hl=zh-cn#gpu)
-  <!-- ![tensoflow gpu require](img/tensoflow-gpu-require.png) -->
-- GPU **tensorflow 2.4** 需要 **CUDA 11.0** 和 **cuDNN 8**
 
 ![cuDNN-download](img/cuDNN-download.png)
 
@@ -226,6 +250,6 @@ sudo chmod a+r /usr/local/cuda-11.0/lib64/libcudnn*
 ```
 
 
-# 参考
+<!-- # 参考
 - [Linux安装NVIDIA显卡驱动](https://blog.csdn.net/wf19930209/article/details/81877822)
-- [Linux安装CUDA GCC版本不兼容](https://blog.csdn.net/HaoZiHuang/article/details/109544443)
+- [Linux安装CUDA GCC版本不兼容](https://blog.csdn.net/HaoZiHuang/article/details/109544443) -->

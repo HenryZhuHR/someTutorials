@@ -1,4 +1,9 @@
 # Ubuntu Mac 化
+> Test For Ubuntu 20.04
+> 
+> 最后更新于 2021.7.19
+
+
 - [Ubuntu Mac 化](#ubuntu-mac-化)
 - [TweakTool](#tweaktool)
   - [安装 TweakTool](#安装-tweaktool)
@@ -9,7 +14,7 @@
     - [Big Sur](#big-sur)
     - [Catalina](#catalina)
   - [修改主题样式](#修改主题样式)
-- [Dash to Dock](#dash-to-dock)
+- [程序坞修改](#程序坞修改)
 - [最终效果](#最终效果)
 
 
@@ -69,7 +74,7 @@ sudo apt install -y gnome-shell-extensions
 之后就可以修改对应的主题
 ![Application](img/application.png)
 
-# Dash to Dock
+# 程序坞修改
 **Dash to Dock**可以把程序坞变成 MacOS 的样子
 ```bash
 sudo apt install -y chrome-gnome-shell
